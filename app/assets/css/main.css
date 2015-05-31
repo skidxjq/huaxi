@@ -80,3 +80,7 @@ label{
     width:10%;
     height:80px;
  }
+#itemRankPage label{
+    margin-right:0px;
+    padding-right:0px;
+}

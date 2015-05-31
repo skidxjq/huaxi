@@ -63,7 +63,9 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http',function($sco
                 itemStyle:{
                     normal:{
                         color:function(){
-                            return $scope.colorSets[$scope.$i++];
+                            //return $scope.colorSets[$scope.$i++];
+                            return $scope.colorSets[($scope.$i++)%12];
+
                         }
                     }
                 },

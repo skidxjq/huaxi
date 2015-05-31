@@ -63,7 +63,8 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http',function($scope,$http) 
                 itemStyle:{
                     normal:{
                         color:function(){
-                            return $scope.colorSets[$scope.$i++];
+                            //return $scope.colorSets[($scope.$i++)%12];
+                            return $scope.colorSets[($scope.$i++)%12];
                         }
                     }
                 },

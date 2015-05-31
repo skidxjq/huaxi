@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.css">-->
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <!--<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>-->
 </head>
@@ -83,7 +84,7 @@
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="" class="auto">
+                    <a ui-sref="state1.list" class="auto">
            <span class="pull-right text-muted">
             <i class="fa fa-fw fa-angle-right text"></i>
             <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -123,14 +124,14 @@
                         <!--</a>-->
                         <!--</li>-->
                         <li class="active">
-                            <a href="" class="auto">
+                            <a  class="auto" href="#/rankOfFundFeeItemRank">
                     <span class="pull-right text-muted">
                         <i class="fa fa-fw fa-angle-right text"></i>
                         <i class="fa fa-fw fa-angle-down text-active"></i>
                     </span>
                                 <i class="fa fa-folder text-info text"></i>
                                 <i class="fa fa-folder-open text-info text-active"></i>
-                                <span class="font-bold">收费项目费用名称</span>
+                                <span class="font-bold">收费项目费用排名</span>
                             </a>
                             <ul class="nav nav-sub dk">
 
@@ -319,11 +320,17 @@
 <script src="assets/js/jquery.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="app.js"></script>
+<!--<script src="vendor/angular/angular-ui-router/angular-ui-router.js"></script>-->
+
+<script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
+
 <script src="assets/js/controllers/headerCtrl.js"></script>
 <script src="assets/js/controllers/efficencyAnalyzeCtrl.js"></script>
 <script src="assets/js/controllers/doctorSingleDiseaseAnalyzeCtrl.js"></script>
 <script src="assets/js/controllers/hospitalSingleDiseaseAnalyzeCtrl.js"></script>
+<script src="assets/js/controllers/rankOfFundFeeItemRankCtrl.js"></script>
 <script src="assets/js/plugins/echarts.min.js"></script>
 <script src="assets/js/plugins/iuChart.js"></script>
 <script src="components/version/version.js"></script>

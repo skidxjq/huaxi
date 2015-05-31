@@ -66,10 +66,77 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log',f
         $(".col-lg-2").toggle();
         //if($(".col-lg-2").attr("display"))
         $(".col-lg-2")[0].style.display=="none"?
-            $(".my-col-lg-1 button")[0].style.marginLeft="27px":
             //console.log("ffff");
-            $(".my-col-lg-1 button")[0].style.marginLeft="15px";
+            $scope.hideMenu():$scope.showMenu();
 
         $log.log($(".col-lg-2")[0].style.display);
     });
+    $scope.hideMenu=function(){
+        $(".my-col-lg-1 button")[0].style.marginLeft="27px";
+        $("#wrapper").removeClass("col-lg-9");
+        $("#wrapper").addClass("col-lg-11");
+
+
+    }
+    $scope.showMenu=function(){
+        $(".my-col-lg-1 button")[0].style.marginLeft="15px";
+        $("#wrapper").removeClass("col-lg-11");
+        $("#wrapper").addClass("col-lg-9");
+
+    }
+    /*
+     * 时间选择控件
+     * */
+    $scope.today = function() {
+        $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.clear = function () {
+        $scope.dt = null;
+    };
+
+    // Disable weekend selection
+    $scope.disabled = function(date, mode) {
+        return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+    };
+
+    $scope.toggleMin = function() {
+        $scope.minDate = $scope.minDate ? null : new Date();
+    };
+    $scope.toggleMin();
+
+    $scope.minDateOpen = function($event) {
+        //console.log($event);
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.maxDateOpened = false;
+
+        $scope.minDateOpened = !$scope.minDateOpened;
+        console.log($scope.minDateOpened);
+        //console.log($scope.maxDateOpened);
+    };
+    $scope.maxDateOpen = function($event) {
+        //console.log($event);
+
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.minDateOpened = false;
+
+        $scope.maxDateOpened = !$scope.maxDateOpened;
+        console.log($scope.minDateOpened);
+        console.log($scope.maxDateOpened);
+    };
+
+
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1,
+        class: 'datepicker'
+    };
+
+    $scope.initDate = new Date('2016-15-20');
+    $scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
 }]);

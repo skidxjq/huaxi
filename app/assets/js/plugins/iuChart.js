@@ -29,6 +29,10 @@ angular.module('iu',[])
             dom.height(220);
           }
           chart = echarts.init(dom);
+          //window.onresize=function(){
+          //  console.log("fff");
+          //}
+          console.log("here");
           //chart.showLoading({text:"正在加载中",textStyle:{fontSize:20}})
           chart.setOption(option);
 
@@ -57,7 +61,11 @@ angular.module('iu',[])
           });
 
           $(window).resize(function () {
-            chart.resize();
+            console.log("fff");
+            //api.resize();
+            window.onresize=chart.resize;
+            //window.onresize = option.chart.resize;
+            //window.resize();
           });
         }
         /**
