@@ -4,40 +4,332 @@
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>医保基金使用效率评价系统</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">-->
+    <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">-->
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!--<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>-->
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+<div class="row" ng-controller="headerCtrl">
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+    <div class="col-lg-2"  style="height:inherit;background-color:#e2e2e2" >
+        <nav ui-nav="" class="aside-wrap navi" ><!-- list -->
+            <ul class="nav ng-scope text-base" id="menu" >
+                <li class="active">
+            <!--<span class="pull-right text-">-->
+            <!--<i class=" fa-fw fa-angle-down text-active"></i>-->
+            <!--</span>-->
+                    <span class="font-bold  clearfix" style="display:inline-block;">
+                         <!--<i class="fa fa-adjust pull-right text"></i>-->
 
-  <div ng-view></div>
+                        <h4 style="text-indent:-999px;">menu
+                        <!--<i class="fa fa-adjust text"></i>-->
+                        </h4>
 
-  <div>Angular seed app: v<span app-version></span></div>
+                    </span>
+                </li>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+                <li class="active">
+                    <a href="" class="auto">
+           <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+           </span>
+                        <i class="fa fa-folder text-info text"></i>
+                        <i class="fa fa-folder-open text-info text-active"></i>
+                        <span class="font-bold">医院单病种效率分析</span>
+                    </a>
+                    <ul class="nav nav-sub dk">
+
+                        <li ui-sref-active="active">
+                            <a href="#/hospitalSingleDiseaseAnalyze">
+                                <i class="fa fa-file"></i>
+
+                                <span>单个医院单病种多指标排名</span>
+                            </a>
+
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="" class="auto">
+           <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+           </span>
+                        <i class="fa fa-folder text-info text"></i>
+                        <i class="fa fa-folder-open text-info text-active"></i>
+                        <span class="font-bold">医生单病种效率分析</span>
+                    </a>
+                    <ul class="nav nav-sub dk">
+
+                        <li ui-sref-active="active">
+                            <a href="#/doctorSingleDiseaseAnalyze">
+                                <i class="fa fa-file"></i>
+
+                                <span>单个医生单病种多指标排名</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="" class="auto">
+           <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+           </span>
+                        <i class="fa fa-folder text-info text"></i>
+                        <i class="fa fa-folder-open text-info text-active"></i>
+
+                        <span class="font-bold">医院效率分析</span>
+                    </a>
+                    <ul class="nav nav-sub dk">
+
+                        <li ui-sref-active="active">
+                            <a href="#/efficencyAnalyze">
+                                <i class="fa fa-file"></i>
+
+                                <span>单个医院所有病种多指标排名</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="" class="auto">
+              <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+              </span>
+                        <i class="fa fa-folder text-info text"></i>
+                        <i class="fa fa-folder-open text-info text-active"></i>
+
+                        <span class="font-bold">基金费用排名</span>
+                    </a>
+                    <ul class="nav nav-sub dk">
+                        <!--<li ui-sref-active="active">-->
+                        <!--<a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info">-->
+                        <!--<span>收费项目排名</span>-->
+                        <!--</a>-->
+                        <!--</li>-->
+                        <li class="active">
+                            <a href="" class="auto">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-fw fa-angle-right text"></i>
+                        <i class="fa fa-fw fa-angle-down text-active"></i>
+                    </span>
+                                <i class="fa fa-folder text-info text"></i>
+                                <i class="fa fa-folder-open text-info text-active"></i>
+                                <span class="font-bold">收费项目费用名称</span>
+                            </a>
+                            <ul class="nav nav-sub dk">
+
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info" style="padding-left:60px;">
+                                        <i class="fa fa-file"></i>
+
+                                        <span>收费项目分析</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="" class="auto">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-fw fa-angle-right text"></i>
+                        <i class="fa fa-fw fa-angle-down text-active"></i>
+                    </span>
+                                <i class="fa fa-folder text-info text"></i>
+                                <i class="fa fa-folder-open text-info text-active"></i>
+                                <span class="font-bold">医生费用排名</span>
+                            </a>
+                            <ul class="nav nav-sub dk">
+
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info" style="padding-left:60px;">
+                                        <i class="fa fa-file"></i>
+
+                                        <span>病种费用排名(fs)</span>
+                                    </a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info" style="padding-left:60px;">
+                                        <i class="fa fa-file"></i>
+
+                                        <span>收费项目费用排名(fs)</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="" class="auto">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-fw fa-angle-right text"></i>
+                        <i class="fa fa-fw fa-angle-down text-active"></i>
+                    </span>
+                                <i class="fa fa-folder text-info text"></i>
+                                <i class="fa fa-folder-open text-info text-active"></i>
+                                <span class="font-bold">医院费用排名</span>
+                            </a>
+                            <ul class="nav nav-sub dk">
+
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info" style="padding-left:60px;">
+                                        <i class="fa fa-file"></i>
+
+                                        <span>医生费用排名(yy)</span>
+                                    </a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info" style="padding-left:60px;">
+                                        <i class="fa fa-file"></i>
+
+                                        <span>病种费用排名(yy)</span>
+                                    </a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info" style="padding-left:60px;">
+                                        <i class="fa fa-file"></i>
+
+                                        <span>收费项目费用排名(yy)</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="" class="auto">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-fw fa-angle-right text"></i>
+                        <i class="fa fa-fw fa-angle-down text-active"></i>
+                    </span>
+                                <i class="fa fa-folder text-info text"></i>
+                                <i class="fa fa-folder-open text-info text-active"></i>
+                                <span class="font-bold">病种费用排名</span>
+                            </a>
+                            <ul class="nav nav-sub dk">
+
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info" style="padding-left:60px;">
+                                        <i class="fa fa-file"></i>
+
+                                        <span>医院费用排名(bz)</span>
+                                    </a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info" style="padding-left:60px;">
+                                        <i class="fa fa-file"></i>
+
+                                        <span>医生费用排名(bz)</span>
+                                    </a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.CLIENT-info" href="#/app/CLIENT-info" style="padding-left:60px;">
+                                        <i class="fa fa-file"></i>
+
+                                        <span>收费项目费用排名(bz)</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="" class="auto">
+                        <i class="fa fa-file"></i>
+
+                        <span class="font-bold">医保基金使用概览</span>
+                    </a>
+                </li>
+
+
+            </ul>
+            <!-- / list --></nav>
+
+    </div>
+    <div class="my-col-lg-1" >
+        <div class="row">
+            <div id="slide-in-out">
+                <button type="submit" class="btn btn-sm btn-info" ng-click="getEcharts();">
+                    <i class="fa fa-angle-right " style="font-size:20px;"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <div class="wrapper active col-lg-9" id="wrapper">
+        <div class="container" id="header" >
+            <img src="assets/img/logo.jpg" class="pull-left" style=" width:150px;height:50px;"/>
+            <div class="col-lg-4" ><h3>医保基金使用效率评价系统</h3></div>
+
+            <div class="col-lg-6 pull-right nav-brand">
+                <ul class="pull-left nav navbar-nav small">
+                    <li class="active"><a href="#">设置</a></li>
+                    <li class="active"><a href="#">帮助说明</a></li>
+                    <li class="active"><a href="#">返回</a></li>
+                    <li class="active"><a href="#">注销</a></li>
+                </ul>
+
+            </div>
+
+            <!--/.nav-collapse -->
+        </div>
+        <div class="row" id="nav">
+            <ul class="nav nav-pills">
+                <li role="presentation" id="li-overview"><a href="#"><i class="glyphicon glyphicon-home"></i> 基金使用概览</a></li>
+                <li role="presentation" id="li-efficencyAnalyze"><a href="#/efficencyAnalyze"><i class="glyphicon glyphicon-briefcase"></i> 医院效率分析</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
+                        <i class="glyphicon glyphicon-book"></i> 单病种效率分析 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu nav nav-pills" role="menu">
+                        <li id="li-hospitalSingleDiseaseAnalyze"><a href="#/hospitalSingleDiseaseAnalyze">医院单病种效率分析</a></li>
+                        <li id="li-doctorSingleDiseaseAnalyze"><a href="#/doctorSingleDiseaseAnalyze">医生单病种效率分析</a></li>
+                        <!--<li class="active"><a href="#">Another action</a></li>-->
+                        <!--<li class="active"><a href="#">Something else here</a></li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li class="active"><a href="#">Separated link</a></li>-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div ng-view></div>
+
+
+    </div>
+</div>
+
+
+<!--load js in the end -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="app.js"></script>
+<script src="assets/js/controllers/headerCtrl.js"></script>
+<script src="assets/js/controllers/efficencyAnalyzeCtrl.js"></script>
+<script src="assets/js/controllers/doctorSingleDiseaseAnalyzeCtrl.js"></script>
+<script src="assets/js/controllers/hospitalSingleDiseaseAnalyzeCtrl.js"></script>
+<script src="assets/js/plugins/echarts.min.js"></script>
+<script src="assets/js/plugins/iuChart.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 </body>
 </html>
