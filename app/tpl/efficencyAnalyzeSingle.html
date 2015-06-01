@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row">
-            <label class="col-lg-2">当前条件：</label>
+            <label class="col-lg-2 m-l ">当前条件：</label>
 
 
         </div>
@@ -26,7 +26,42 @@
     </form>
 
 </div>
+<div  class="row m-t">
+    <div class="col-lg-5">
+    <h4><span ng-bind="hospitalName"></span>医保基金使用效率各项指标排名</h4>
+    <div data-iu-chart="efficencyRank_Left_Option" class="m-t" style="height:480px;"></div>
 
-<h3 ng-bind="hospitalName">
 
-</h3>
+    </div>
+    <div class="col-lg-7">
+        <div class="row">
+            <h5><span ng-bind="hospitalName"></span>重点病种基金使用效率在同级别医院中排名概览</h5>
+
+            <div class="col-lg-6">
+                <span class="handcursor label bg-primary inline ">前5名</span>
+                <span class="handcursor label bg-primary inline ">前10名</span>
+                <div data-iu-chart="efficencyRank_RightLeft_Option" class="" style="height:180px;"></div>
+
+            </div>
+            <div class="col-lg-6">
+                <span class="handcursor label bg-primary inline ">前5名</span>
+                <span class="handcursor label bg-primary inline ">前10名</span>
+                <div data-iu-chart="efficencyRank_RightRight_Option" class="" style="height:180px;"></div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <h5><span ng-bind="hospitalName"></span>重点病种基金使用效率排名与基金使用量综合分析</h5>
+            <span class="handcursor label bg-primary inline ">金额占比前10名</span>
+            <span class="handcursor label bg-primary inline ">金额占比前5名</span>
+
+                <div data-iu-chart="efficencyRank_RightBottom_Option" class="" style="height:220px;"></div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
