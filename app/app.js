@@ -2,15 +2,18 @@
 
 // Declare app level module which depends on views, and components
 var app=angular.module('myApp', [
-  'ngRoute',
+    'ngRoute',
     'iu',
+    'ngStorage',
     'oc.lazyLoad',
     'ui.bootstrap',
+    //'ui.select',
+    //'ngSanitize',
     //'ui.router',
-  //'myApp.view1',
+    //'myApp.view1',
 
-  //'myApp.view2',
-  'myApp.version'
+    //'myApp.view2',
+    'myApp.version'
 ])
 //    .run(
 //    [          '$rootScope', '$state', '$stateParams',
@@ -54,57 +57,58 @@ var app=angular.module('myApp', [
 //    ;
 //})
     .config(['$routeProvider', function($routeProvider) {
-      $routeProvider
-          .when('/error', {
-            templateUrl: 'tpl/404.html'
-            //controller: 'View1Ctrl'
-          })
-          //.when('/view2', {
-          //  templateUrl: 'view2/view2.html',
-          //  controller: 'View2Ctrl'
-          //})
-          .when('/efficencyAnalyze', {
-            templateUrl: 'tpl/efficencyAnalyze.html',
-            controller: 'efficencyAnalyzeCtrl'
-            //  resolve: {
-            //      deps: ['$ocLazyLoad',
-            //          function ($ocLazyLoad) {
-            //              console.log("33333");
-            //              return ($ocLazyLoad).load([
-            //                  'assets/js/controllers/efficencyAnalyzeCtrl.js'
-            //              ]);
-            //
-            //          }]
-            //  }
-          })
-          .when('/hospitalSingleDiseaseAnalyze', {
-            templateUrl: 'tpl/hospitalSingleDiseaseAnalyze.html',
-            controller: 'hospitalSingleDiseaseAnalyzeCtrl'
+        $routeProvider
+            .when('/error', {
+                templateUrl: 'tpl/404.html'
+                //controller: 'View1Ctrl'
+            })
+            //.when('/view2', {
+            //  templateUrl: 'view2/view2.html',
+            //  controller: 'View2Ctrl'
+            //})
+            .when('/efficencyAnalyze', {
+                templateUrl: 'tpl/efficencyAnalyze.html',
+                controller: 'efficencyAnalyzeCtrl'
 
-          })
-           .when('/doctorSingleDiseaseAnalyze', {
-            templateUrl: 'tpl/doctorSingleDiseaseAnalyze.html',
-            controller: 'doctorSingleDiseaseAnalyzeCtrl'
+            })
+            .when('/efficencyAnalyzeSingle', {
+                templateUrl: 'tpl/efficencyAnalyzeSingle.html',
+                controller: 'efficencyAnalyzeSingleCtrl'
 
-          })
+            })
+            .when('/hospitalSingleDiseaseAnalyze', {
+                templateUrl: 'tpl/hospitalSingleDiseaseAnalyze.html',
+                controller: 'hospitalSingleDiseaseAnalyzeCtrl'
+
+            })
+            .when('/doctorSingleDiseaseAnalyze', {
+                templateUrl: 'tpl/doctorSingleDiseaseAnalyze.html',
+                controller: 'doctorSingleDiseaseAnalyzeCtrl'
+
+            })
             //收费项目费用排名
-          .when('/rankOfFundFeeItemRank', {
-            templateUrl: 'tpl/rankOfFundFee/fee/itemRank.html',
-            //controller: 'rankOfFundFeeItemRankCtrl',
-              resolve: {
-                  deps: ['$ocLazyLoad',
-                      function ($ocLazyLoad) {
-                          console.log("33333");
-                          return ($ocLazyLoad).load([
-                              'assets/js/controllers/rankOfFundFeeItemRankCtrl.js'
-                              ]);
+            .when('/rankOfFundFeeItemRank', {
+                templateUrl: 'tpl/rankOfFundFee/fee/itemRank.html',
+                //controller: 'rankOfFundFeeItemRankCtrl',
+                resolve: {
+                    deps: ['$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            console.log("33333");
+                            return ($ocLazyLoad).load([
+                                'assets/js/controllers/rankOfFundFeeItemRankCtrl.js'
+                            ]);
 
-                      }]
-              }
+                        }]
+                }
 
-          })
+            })
+            .when('/select', {
+                templateUrl: 'tpl/form_select.html',
+                controller: 'selectCtrl'
 
-          .otherwise({redirectTo: '/error'});
+            })
+
+            .otherwise({redirectTo: '/error'});
     }]);
 //angular.module('ui.bootstrap').controller('AlertDemoCtrl', function ($scope) {
 //    $scope.alerts = [

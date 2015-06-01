@@ -19,13 +19,13 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log',f
     var locationChangeStartOff = $rootScope.$on('$locationChangeStart', locationChangeStart);
     var locationChangeSuccessOff = $rootScope.$on('$locationChangeSuccess', locationChangeSuccess);
     function locationChangeStart(event) {
-        $log.log('locationChangeStart');
-        $log.log(arguments);
+        //$log.log('locationChangeStart');
+        //$log.log(arguments);
     }
 
     function locationChangeSuccess(event) {
-        $log.log('locationChangeSuccess');
-        $log.log(arguments);
+        //$log.log('locationChangeSuccess');
+        //$log.log(arguments);
         $scope.addLiActive($scope.getRelativePath($location.absUrl()));
 
     }

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.css">-->
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/select.css">
     <!--<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>-->
 </head>
 <body>
@@ -84,7 +85,7 @@
                     </ul>
                 </li>
                 <li class="active">
-                    <a ui-sref="state1.list" class="auto">
+                    <a ui-sref="state1.list" href="#/efficencyAnalyze" class="auto">
            <span class="pull-right text-muted">
             <i class="fa fa-fw fa-angle-right text"></i>
             <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -97,7 +98,7 @@
                     <ul class="nav nav-sub dk">
 
                         <li ui-sref-active="active">
-                            <a href="#/efficencyAnalyze">
+                            <a href="#/efficencyAnalyzeSingle">
                                 <i class="fa fa-file"></i>
 
                                 <span>单个医院所有病种多指标排名</span>
@@ -325,12 +326,15 @@
 <!--<script src="vendor/angular/angular-ui-router/angular-ui-router.js"></script>-->
 
 <script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
+<script src="vendor/angular/ngstorage/ngStorage.js"></script>
 
 <script src="assets/js/controllers/headerCtrl.js"></script>
 <script src="assets/js/controllers/efficencyAnalyzeCtrl.js"></script>
+<script src="assets/js/controllers/efficencyAnalyzeSingleCtrl.js"></script>
 <script src="assets/js/controllers/doctorSingleDiseaseAnalyzeCtrl.js"></script>
 <script src="assets/js/controllers/hospitalSingleDiseaseAnalyzeCtrl.js"></script>
 <script src="assets/js/controllers/rankOfFundFeeItemRankCtrl.js"></script>
+<script src="assets/js/controllers/select.js"></script>
 <script src="assets/js/plugins/echarts.min.js"></script>
 <script src="assets/js/plugins/iuChart.js"></script>
 <script src="components/version/version.js"></script>

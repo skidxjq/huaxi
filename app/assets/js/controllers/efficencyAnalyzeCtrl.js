@@ -1,7 +1,7 @@
 /**
  * Created by mac on 15-5-29.
  */
-app.controller('efficencyAnalyzeCtrl', ['$scope','$http',function($scope,$http) {
+app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage',function($scope,$http,$localStorage) {
 
     console.log(666);
     $scope.getEcharts=function(){
@@ -19,7 +19,7 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http',function($scope,$http) 
         "w6":"5",
         "w7":"5"
     };
-    $scope.chartProvinceOption = {
+    $scope.efficencyRankOption = {
         version: 1,
         tooltip: {
             trigger: 'axis'
@@ -65,6 +65,10 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http',function($scope,$http) 
                         color:function(){
                             //return $scope.colorSets[($scope.$i++)%12];
                             return $scope.colorSets[($scope.$i++)%12];
+                        },
+                        label:{
+                            show:true,
+                            position:"right"
                         }
                     }
                 },
@@ -72,8 +76,22 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http',function($scope,$http) 
             }
         ],
         onRegisterApi: function (chartApi) {
-            chartProvinceApi = chartApi;
+            efficencyRankOptionApi = chartApi;
+            efficencyRankOptionApi.registerBarClicked($scope,$scope.clickEvent);
+
+            //chartPro
         }
     };
+
+    $scope.clickEvent=function($params){
+        console.log($params);
+        $localStorage.hospitalName=$params["name"];
+        //$location.href="#/efficencyAnalyzeSingle";
+        console.log($localStorage);
+        //console.log($location);
+        console.log(window.location);
+        //window.location.href="http://localhost:63342/themeforest-8437259-angulr-bootstrap-admin-web-app-with-angularjs/angular-seed/app/index.html#/efficencyAnalyzeSingleCtrl";
+        window.location.href="#/efficencyAnalyzeSingle";
+    }
 
 }]);

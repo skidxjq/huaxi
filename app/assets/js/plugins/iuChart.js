@@ -172,25 +172,15 @@ angular.module('iu',[])
             /*
             * 骚扰分析-地图选择事件
             * */
-            registerMapSelected:function(oScope){
+            registerBarClicked:function(oScope,callBackfunc){
               //registerMapSelected:function(callBack){
               chart.on(echarts.config.EVENT.CLICK,function(params) {
                 //console.log(oScope.d0_1);
-                console.log(oScope);
-                oScope.changeDistrictPie(params);
+                //console.log(oScope);
+                callBackfunc(params);
               })
             },
-            /*
-             * 骚扰分析-通话次数事件
-             * */
-            registerTimeLineSelected:function(oScope){
-              //registerMapSelected:function(callBack){
-              chart.on(echarts.config.EVENT.CLICK,function(params) {
-                //cxonsole.log(oScope.d0_1);
-                console.log(oScope);
-                oScope.changeTimeLineHour(params);
-              })
-            },
+
             /**
              * registe Events
              * @param oScope
