@@ -5,9 +5,9 @@
                 <label class="col-lg-2-4 " >等级:</label>
                 <div class="col-lg-9">
                     <!--<select id="u0_input" data-label="xiala-dengji">-->
-                    <select class="form-control " style="width:100%;">
+                    <select class="form-control " style="width:100%;" ng-model="formData.hospitalType" ng-init="formData.hospitalType='0101'">
 
-                        <option ng-repeat="obj in hosptalTypesSets" value="{{obj.value}}">{{obj.name}}</option>
+                        <option ng-repeat="obj in hospitalTypesSets" value="{{obj.value}}">{{obj.name}}</option>
 
                     </select>
                 </div>
@@ -26,7 +26,7 @@
 
                 </div>
                 <div class="col-lg-4" style="margin-right:0px;padding-right:0px;">
-                    <select class="form-control m-t-xs" style="width:100%;" >
+                    <select class="form-control m-t-xs" style="width:100%;" ng-model="formData.diseaseType" id="diseaseName">
                         <!--这个地方数据绑定有点问题-->
                         <!--todo-->
 
@@ -59,10 +59,10 @@
                 <label class="col-lg-2-4 center">分类</label>
                 <div class="col-lg-6">
                     <label class="checkbox-inline i-checks">
-                        <input type="checkbox" value="option1"><i></i>城乡
+                        <input type="checkbox" value="option1" ng-model="formData.village"><i></i>城乡
                     </label>
                     <label class="checkbox-inline i-checks">
-                        <input type="checkbox" value="option2"><i></i> 城镇
+                        <input type="checkbox" value="option2" ng-model="formData.city"><i></i> 城镇
                     </label>
 
                 </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="form-inline row  m-b-sm" >
                 <label class="col-lg-10 center">
-                    仅选取数据量大于<input type="text" class="form-control" style="width:20%;" value="10">条记录的医生
+                    仅选取数据量大于<input type="text" class="form-control" style="width:20%;" ng-model="formData.limitNum" value="10">条记录的医生
                 </label>
             </div>
             <div class="form-inline row  " >
@@ -146,7 +146,7 @@
             </div>
             <div class="form-inline row">
                 <div class="col-lg-offset-7 col-lg-10 text-2x">
-                    <button type="submit" class="btn btn-sm btn-info" ng-click="getEcharts();">提交</button>
+                    <button type="submit" class="btn btn-sm btn-info" ng-click="optionSubmit();">提交</button>
                 </div>
             </div>
 
@@ -155,7 +155,7 @@
     </div>
     <div class="col-lg-7 content-echarts" >
         <h4>医生恶性肿瘤疾病基金效率使用排名</h4>
-        <div data-iu-chart="chartProvinceOption" class="m-l m-t" style="height:400px;"></div>
+        <div data-iu-chart="echartsOption" class="m-l m-t" style="height:400px;"></div>
 
     </div>
 </div>

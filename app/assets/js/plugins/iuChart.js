@@ -176,6 +176,7 @@ angular.module('iu',[])
               chart.on(echarts.config.EVENT.CLICK,function(params) {
                 //console.log(oScope.d0_1);
                 //console.log(oScope);
+                //$scope.XXXX
                 callBackfunc(params);
               })
             },

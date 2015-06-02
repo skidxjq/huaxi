@@ -67,23 +67,33 @@ var app=angular.module('myApp', [
             //  controller: 'View2Ctrl'
             //})
             .when('/efficencyAnalyze', {
-                templateUrl: 'tpl/efficencyAnalyze.html',
+                templateUrl: 'tpl/hositalEfficency/efficencyAnalyze.html',
                 controller: 'efficencyAnalyzeCtrl'
 
             })
             .when('/efficencyAnalyzeSingle', {
-                templateUrl: 'tpl/efficencyAnalyzeSingle.html',
+                templateUrl: 'tpl/hositalEfficency/efficencyAnalyzeSingle.html',
                 controller: 'efficencyAnalyzeSingleCtrl'
 
             })
             .when('/hospitalSingleDiseaseAnalyze', {
-                templateUrl: 'tpl/hospitalSingleDiseaseAnalyze.html',
+                templateUrl: 'tpl/hospital/hospitalSingleDiseaseAnalyze.html',
                 controller: 'hospitalSingleDiseaseAnalyzeCtrl'
 
             })
             .when('/doctorSingleDiseaseAnalyze', {
-                templateUrl: 'tpl/doctorSingleDiseaseAnalyze.html',
+                templateUrl: 'tpl/doctor/doctorSingleDiseaseAnalyze.html',
                 controller: 'doctorSingleDiseaseAnalyzeCtrl'
+
+            })
+            .when('/doctorSingleDiseaseAnalyzeResult', {
+                templateUrl: 'tpl/doctor/doctorSingleDiseaseAnalyzeResult.html',
+                controller: 'doctorSingleDiseaseAnalyzeResultCtrl'
+
+            })
+            .when('/hospitalSingleDiseaseAnalyzeResult', {
+                templateUrl: 'tpl/hospital/hospitalSingleDiseaseAnalyzeResult.html',
+                controller: 'hospitalSingleDiseaseAnalyzeResultCtrl'
 
             })
             //收费项目费用排名

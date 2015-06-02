@@ -1,0 +1,44 @@
+<div class="row bg-info text-dark" id="itemRankPage">
+    <form class="form-horizontal form-group">
+        <div class="row ">
+            <div class="col-lg-4 m-l m-t">
+
+                <div class="row form-inline row m-b-xs clearfix">
+                    <label class="pull-left m-l my-label" >当前医院:</label>
+                    <div class="col-lg-5">
+                        <!--<select id="u0_input" data-label="xiala-dengji">-->
+                        <select class="form-control " style="width:100%;">
+                            <option ng-repeat="obj in queryData.hospitalSets" value="{{obj.idString}}">{{obj.hnameString}}</option>
+                        </select>
+                    </div>
+                </div>
+                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-lg-1 m-l ">查询条件：</label>
+            <div class="col-lg-8 " style="margin-top:5px;padding-left:0px;">
+            <span class="handcursor label bg-primary  m-r " ng-bind="formDataMap.hospitalType[queryData.hospitalType]"></span>
+            <span class="handcursor label bg-primary  m-r " ng-bind="formDataMap.village" ng-show="queryData.village==true"></span>
+            <span class="handcursor label bg-primary  m-r " ng-bind="formDataMap.city" ng-show="queryData.city==true"></span>
+            <span class="handcursor label bg-primary  m-r" ng-bind="queryData.diseaseName"></span>
+            <span class="handcursor label bg-primary  m-r">{{queryData.startTime}}至{{queryData.endTime}}</span>
+            <span class="handcursor label bg-primary  m-r" ng-bind="queryData.hospital"></span>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+<div class="row">
+    <div class="col-lg-6">
+    <h4>{{queryData.hospital}}各项指标排名</h4>
+        <div data-iu-chart="leftechartsOption" style="height:300px"></div>
+    </div>
+    <div class="col-lg-6">
+    <h4>{{queryData.hospital}}排名频次分布</h4>
+        <div data-iu-chart="rightechartsOption" style="height:300px"></div>
+
+    </div>
+
+</div>

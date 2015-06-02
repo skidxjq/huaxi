@@ -142,9 +142,31 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log',f
 
 
     //下面定义一些全局都会用到的变量
+
+    //定义一些key-value
+    $scope.formDataMap= {
+        "village": "城乡",
+        "city": "城镇",
+        "hospitalType": {
+            "0101": "三甲医院",
+            "0102": "三乙医院",
+            "0201": "二甲医院",
+            "0202": "二乙医院",
+            "0301": "二乙医院以下下浮10%",
+            "0302": "二乙医院以下下浮20%",
+            "0401": "药店"
+        }
+    }
+
+
+
+    //颜色集合 echarts专用
+    $scope.$i=0;
+    $scope.colorSets=["#eee","red","pink","#7266ba","#fad733","green","#23b7e5","#27c24c","#dff0d8","#E0FFFF","#C0FF3E","#8B2500"];
     //医院类型的集合
 
-    $scope.hosptalTypesSets=[
+
+    $scope.hospitalTypesSets=[
         {"value":"0101","name":"三甲医院"},
         {"value":"0102","name":"三乙医院"},
         {"value":"0201","name":"二甲医院"},
