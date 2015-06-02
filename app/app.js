@@ -89,7 +89,7 @@ var app=angular.module('myApp', [
             //收费项目费用排名
             .when('/rankOfFundFeeItemRank', {
                 templateUrl: 'tpl/rankOfFundFee/fee/itemRank.html',
-                //controller: 'rankOfFundFeeItemRankCtrl',
+                controller: 'rankOfFundFeeItemRankCtrl',
                 resolve: {
                     deps: ['$ocLazyLoad',
                         function ($ocLazyLoad) {

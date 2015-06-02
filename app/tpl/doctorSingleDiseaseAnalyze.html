@@ -7,68 +7,49 @@
                     <!--<select id="u0_input" data-label="xiala-dengji">-->
                     <select class="form-control " style="width:100%;">
 
-                        <option value="&lt;选择医院等级&gt;">&lt;选择医院等级&gt;</option>
-                        <option value="三甲医院">三甲医院</option>
-                        <option value="三乙医院">三乙医院</option>
-                        <option value="二甲医院">二甲医院</option>
-                        <option value="二乙医院">二乙医院</option>
-                        <option value="一级医院">一级医院</option>
+                        <option ng-repeat="obj in hosptalTypesSets" value="{{obj.value}}">{{obj.name}}</option>
+
                     </select>
                 </div>
 
                 <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
             </div>
             <div class="form-inline row m-b-sm">
-                <label class="col-lg-2-4 " >病种:</label>
-                <div class="col-lg-7" style="margin-right:0px;padding-right:0px;">
-                    <input type="text" class="form-control" style="width:70%"  placeholder="输入关键字快速搜索">
-                    <span class="help-block m-b-none">第1项，共4项</span>
-                    <!--<select class="form-control " style="width:100%;">-->
-                    <!--<option value="&lt;选择医院等级&gt;">&lt;选择医院等级&gt;</option>-->
-                    <!--<option value="三甲医院">三甲医院</option>-->
-                    <!--<option value="三乙医院">三乙医院</option>-->
-                    <!--<option value="二甲医院">二甲医院</option>-->
-                    <!--<option value="二乙医院">二乙医院</option>-->
-                    <!--<option value="一级医院">一级医院</option>-->
-                    <!--</select>-->
-                    <!--<select id="u181_input">-->
-                    <select class="form-control m-t-xs" style="width:100%;">
+                <label class="col-lg-2-4 " >病种-病名:</label>
+                <div class="col-lg-4" style="margin-right:0px;padding-right:0px;">
+                    <select class="form-control m-t-xs" style="width:100%;" ng-model="formData.diseaseCategory" ng-init="formData.diseaseCategory='1'">
+                        <option ng-repeat="obj in diseasesSets.diseaseCategory" value="{{obj.value}}">{{obj.name}}</option>
 
-                        <option value=" 呼吸系统类"> 呼吸系统类</option>
-                        <option value="       肺气肿">&nbsp; &nbsp; &nbsp;&nbsp; 肺气肿</option>
-                        <option value="               急性肺气肿">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 急性肺气肿</option>
-                        <option value="       支气管炎">&nbsp; &nbsp; &nbsp;&nbsp; 支气管炎</option>
-                        <option value="                急性支气管炎">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 急性支气管炎</option>
-                        <option value="消化系统类">消化系统类</option>
-                        <option value="       慢性胃炎">&nbsp; &nbsp; &nbsp;&nbsp; 慢性胃炎</option>
-                        <option value="       急性胃炎">&nbsp; &nbsp; &nbsp;&nbsp; 急性胃炎</option>
+
                     </select>
-                </div>
-                <div class="col-lg-1">
-                    <button type="submit" class="btn btn-sm btn-info" ng-click="getEcharts();">下一个</button>
+                    <!--病名-->
 
                 </div>
-                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+                <div class="col-lg-4" style="margin-right:0px;padding-right:0px;">
+                    <select class="form-control m-t-xs" style="width:100%;" >
+                        <!--这个地方数据绑定有点问题-->
+                        <!--todo-->
+
+                        <option ng-repeat="obj in diseasesSets.diseaseNames[index]" value="{{obj.value}}">{{obj.name}}</option>
+
+                    </select>
+                    <!--病名-->
+
+                </div>
             </div>
 
             <div class="form-inline row  m-b-sm">
 
                 <label class="col-lg-2-4">时间段:</label>
                 <div class="col-lg-3">
-                    <select class="form-control " style="width:100%;">
-                        <option>2014</option>
-                        <option>2013</option>
-                        <option>2012</option>
-                        <option>2011</option>
+                    <select class="form-control " ng-model="formData.startTime" style="width:100%;">
+                        <option ng-repeat="obj in yearSets" value="{{obj.value}}">{{obj.name}}</option>
                     </select>
                 </div>
                 <label class="col-lg-1">到</label>
                 <div class="col-lg-3">
-                    <select class="form-control " style="width:100%;">
-                        <option>2014</option>
-                        <option>2013</option>
-                        <option>2012</option>
-                        <option>2011</option>
+                    <select class="form-control "  ng-model="formData.endTime" style="width:100%;">
+                        <option ng-repeat="obj in yearSets" value="{{obj.value}}">{{obj.name}}</option>
                     </select>
                 </div>
 

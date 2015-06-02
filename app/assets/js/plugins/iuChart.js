@@ -44,7 +44,7 @@ angular.module('iu',[])
           if(angular.isDefined(scope.iuChart.version)){
             watch = scope.$watch('iuChart.version',function(newValue,oldValue){
               if(newValue !== oldValue) {
-
+                console.log("change version");
                 chart.setOption(option,true);
                 chart.hideLoading();
 
@@ -75,7 +75,6 @@ angular.module('iu',[])
           api = {
             set:function(newOption){
               window.onresize=chart.resize;
-              console.log("ddd");
               chart.setOption(newOption,true);
 
             },
