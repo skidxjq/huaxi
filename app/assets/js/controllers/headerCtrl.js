@@ -1,7 +1,7 @@
 /**
  * Created by mac on 15-5-29.
  */
-app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log',function($rootScope,$scope,$http,$location,$log) {
+app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','$modal',function($rootScope,$scope,$http,$location,$log,$modal) {
 
     /*
      * ul li点击事件
@@ -157,9 +157,33 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log',f
             "0401": "药店"
         }
     }
+    $scope.config={};
+    $scope.config.baseUrl="http://10.20.1.12:8070";
+    $scope.config.echarts={};
+    $scope.config.echarts.legend=[
+        ["就诊次数","次均费用","并发症用户占比","次均住院时长","住院时长标准差","再次入院间隔/费用","病情好转指标"]
+    ];
+    //网格线
+    $scope.config.echarts.grid={
+        "middle":{
+            x: 80,
+            y: 10,
+            x2: 40,
+            y2: 55
+        }
+    };
 
-
-
+    //传入参数 option echarts、json数据，绘图方向
+    $scope.config.echarts.drawBar=function(options,echarts,jsonData,direction){
+        direction=="vertical"?
+            options.yAxis[0].data=jsonData["axis"]:
+            options.xAxis[0].data=jsonData["axis"];
+        options.series[0].data=jsonData["series"][0];
+        //console.log(options);
+        echarts.setOption(options);
+        console.log(options);
+        options.version++;
+    }
     //颜色集合 echarts专用
     $scope.$i=0;
     $scope.colorSets=["#eee","red","pink","#7266ba","#fad733","green","#23b7e5","#27c24c","#dff0d8","#E0FFFF","#C0FF3E","#8B2500"];
@@ -220,6 +244,65 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log',f
         }
 
 
-    }
+    };
+
+
+    /*
+     * modal窗口test
+     * */
+    $scope.closeModal=function(){
+        console.log("removemodal");
+        $scope.modalInstance.dismiss();
+    };
+    $scope.openModal = function () {
+        console.log($modal);
+        //console.log($scope);
+//        //$scope.
+//        //$scope.drawEcharts();
+        $scope.modalInstance = $modal.open({
+            templateUrl: 'tpl/modal.html',
+            controller: 'ModalInstanceCtrl',
+            backdrop:'static',
+            //windowClass:'my-modal-class',
+            keyboard:false,
+            //size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+        $scope.modalInstance.result.then(
+            function (selectedItem) {
+                console.log("click ok");
+                //$scope.selected = selectedItem;
+                //$scope.drawEcharts();
+
+            },
+            function () {
+                //$log.info('Modal dismissed at: ' + new Date());
+            });
+        //$scope.close();
+        //$scope.modalInstance.dismiss("dddd");
+        //console.log($);c c
+    };
+
+}]);
+app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function($scope, $modalInstance) {
+    //$scope.items = items;
+    //$scope.selected = {
+    //    item: $scope.items[0]
+    //};
+    console.log($scope);
+    console.log($scope.colorSets);
+    //$scope.ok = function () {
+    //    $modalInstance.close($scope.selected.item);
+    //};
+    //
+    $scope.cancel = function () {
+        console.log("66666");
+        $modalInstance.dismiss('cancel');
+    };
+    //setTimeout(function(){$scope.cancel()},5000);
 
 }]);

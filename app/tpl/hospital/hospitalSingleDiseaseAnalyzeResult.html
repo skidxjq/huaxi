@@ -5,10 +5,12 @@
 
                 <div class="row form-inline row m-b-xs clearfix">
                     <label class="pull-left m-l my-label" >当前医院:</label>
-                    <div class="col-lg-5">
+                    <div class="col-lg-8">
                         <!--<select id="u0_input" data-label="xiala-dengji">-->
-                        <select class="form-control " style="width:100%;">
-                            <option ng-repeat="obj in queryData.hospitalSets" value="{{obj.idString}}">{{obj.hnameString}}</option>
+                        <select class="form-control " style="width:100%;" id="hospitalSets" ng-model="formData.hospitalId" >
+                            <!--<option value="">{{queryData.hospital}}</option>-->
+                            <!--to do-->
+                            <option ng-repeat="obj in formData.hospitalSets" ng-selected="obj.hnameString==queryData.hospital" value="{{obj.idString}}">{{obj.hnameString}}</option>
                         </select>
                     </div>
                 </div>
@@ -33,10 +35,19 @@
 <div class="row">
     <div class="col-lg-6">
     <h4>{{queryData.hospital}}各项指标排名</h4>
-        <div data-iu-chart="leftechartsOption" style="height:300px"></div>
+        <div data-iu-chart="leftechartsOption" style="height:350px"></div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 ">
     <h4>{{queryData.hospital}}排名频次分布</h4>
+        <div class="row form-inline" style="margin-left:50px;">
+            <label class="col-lg-10 center">
+                随机生成各指标权重<input type="text"  class="m-l m-r-md form-control" ng-model="formData.repeat" style="width:20%;" value="10000">
+                <button type="submit" class="btn btn-sm btn-info" ng-click="drawRightEcharts();">重新计算</button>
+
+            </label>
+
+        </h5>
+        </div>
         <div data-iu-chart="rightechartsOption" style="height:300px"></div>
 
     </div>

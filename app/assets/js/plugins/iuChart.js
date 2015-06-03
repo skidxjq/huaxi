@@ -61,7 +61,6 @@ angular.module('iu',[])
           });
 
           $(window).resize(function () {
-            console.log("fff");
             //api.resize();
             window.onresize=chart.resize;
             //window.onresize = option.chart.resize;

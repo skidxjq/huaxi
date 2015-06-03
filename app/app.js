@@ -62,10 +62,10 @@ var app=angular.module('myApp', [
                 templateUrl: 'tpl/404.html'
                 //controller: 'View1Ctrl'
             })
-            //.when('/view2', {
-            //  templateUrl: 'view2/view2.html',
-            //  controller: 'View2Ctrl'
-            //})
+            .when('/view2', {
+              templateUrl: 'view2/view2.html',
+              controller: 'View2Ctrl'
+            })
             .when('/efficencyAnalyze', {
                 templateUrl: 'tpl/hositalEfficency/efficencyAnalyze.html',
                 controller: 'efficencyAnalyzeCtrl'

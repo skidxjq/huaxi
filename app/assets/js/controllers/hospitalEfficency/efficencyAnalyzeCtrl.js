@@ -1,7 +1,7 @@
 /**
  * Created by mac on 15-5-29.
  */
-app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage',function($scope,$http,$localStorage) {
+app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$modal','$localStorage',function($scope,$http,$localStorage,$modal) {
 
 
 
@@ -32,8 +32,6 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage',functio
         $scope.echarts.setOption($scope.efficencyRankOption,true);
 
     }
-    $scope.colorSets=["#eee","red","pink","#7266ba","#fad733","green","#23b7e5","#27c24c","#dff0d8","#E0FFFF","#C0FF3E","#8B2500"];
-    $scope.$i=0;
 
     $scope.formData={
         "hospitalType" : "0101",
@@ -147,5 +145,7 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage',functio
         //window.location.href="http://localhost:63342/themeforest-8437259-angulr-bootstrap-admin-web-app-with-angularjs/angular-seed/app/index.html#/efficencyAnalyzeSingleCtrl";
         window.location.href="#/efficencyAnalyzeSingle";
     }
+
+
 
 }]);

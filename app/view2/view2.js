@@ -9,6 +9,7 @@
 //  });
 //}])
 
-app.controller('View2Ctrl', [function() {
+app.controller('View2Ctrl', ['$scope','$http','$modal','$localStorage',function($scope,$http,$modal,$localStorage) {
+    console.log($modal);
 
 }]);

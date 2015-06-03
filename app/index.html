@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
@@ -16,10 +16,11 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.css">-->
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-3.0.min.css">
     <link rel="stylesheet" href="assets/css/select.css">
     <!--<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>-->
 </head>
-<body ng-controller="headerCtrl">
+<body  ng-controller="headerCtrl">
 <div class="row" >
 
     <div class="col-lg-2"  style="height:inherit;background-color:#e2e2e2" >
@@ -40,7 +41,7 @@
                 </li>
 
                 <li class="active">
-                    <a href="" class="auto">
+                    <a href="#/hospitalSingleDiseaseAnalyze" class="auto">
            <span class="pull-right text-muted">
             <i class="fa fa-fw fa-angle-right text"></i>
             <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -52,7 +53,7 @@
                     <ul class="nav nav-sub dk">
 
                         <li ui-sref-active="active">
-                            <a href="#/hospitalSingleDiseaseAnalyze">
+                            <a href="#/hospitalSingleDiseaseAnalyzeResult">
                                 <i class="fa fa-file"></i>
 
                                 <span>单个医院单病种多指标排名</span>
@@ -63,7 +64,7 @@
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="" class="auto">
+                    <a href="#/doctorSingleDiseaseAnalyze" class="auto">
            <span class="pull-right text-muted">
             <i class="fa fa-fw fa-angle-right text"></i>
             <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -75,7 +76,7 @@
                     <ul class="nav nav-sub dk">
 
                         <li ui-sref-active="active">
-                            <a href="#/doctorSingleDiseaseAnalyze">
+                            <a href="#/doctorSingleDiseaseAnalyzeResult">
                                 <i class="fa fa-file"></i>
 
                                 <span>单个医生单病种多指标排名</span>
@@ -297,7 +298,9 @@
                 <li role="presentation" id="li-efficencyAnalyze"><a href="#/efficencyAnalyze"><i class="glyphicon glyphicon-briefcase"></i> 医院效率分析</a></li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
-                        <i class="glyphicon glyphicon-book"></i> 单病种效率分析 <span class="caret"></span>
+                        <!--<i class="glyphicon glyphicon-book"></i> -->
+                        <i class="icon icon-spinner icon-spin  "></i>
+                        单病种效率分析 <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu nav nav-pills" role="menu">
                         <li id="li-hospitalSingleDiseaseAnalyze"><a href="#/hospitalSingleDiseaseAnalyze">医院单病种效率分析</a></li>
@@ -322,12 +325,14 @@
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
 <script src="app.js"></script>
 <!--<script src="vendor/angular/angular-ui-router/angular-ui-router.js"></script>-->
 
 <script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
 <script src="vendor/angular/ngstorage/ngStorage.js"></script>
 
+<script src="view2/view2.js"></script>
 <script src="assets/js/controllers/headerCtrl.js"></script>
 <script src="assets/js/controllers/hospitalEfficency/efficencyAnalyzeCtrl.js"></script>
 <script src="assets/js/controllers/hospitalEfficency/efficencyAnalyzeSingleCtrl.js"></script>

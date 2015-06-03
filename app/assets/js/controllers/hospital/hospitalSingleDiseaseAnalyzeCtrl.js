@@ -1,8 +1,8 @@
 /**
  * Created by mac on 15-5-29.
  */
-app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorage',function($scope,$http,$localStorage) {
-
+app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$localStorage',function($scope,$http,$modal,$localStorage) {
+    console.log($modal);
     $scope.getEcharts=function(){
         console.log($scope.formData);
     };
@@ -30,6 +30,7 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStor
     $scope.$watch('formData.diseaseCategory',function(newValue,oldValue,scope){
         //console.log(newValue);
         $scope.index=newValue;
+        console.log($("#hospitalSets").find("option:selected").text());
     });
     //$scope.echartsOption={
     //    //legend
@@ -114,6 +115,7 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStor
         }
     };
     $scope.optionSubmit=function(){
+        $scope.openModal();
         $scope.formData.diseaseName=$("#diseaseName").find("option:selected").text();
         //更改title
         $scope.echartsTitle="四川"+$scope.formDataMap.hospitalType[$scope.formData.hospitalType]+$scope.formData.diseaseName+"基金效率使用排名";
@@ -125,18 +127,28 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStor
         //已经测试通过
         $.ajax({
             type:"GET",
-            url:"http://localhost/skidxjq/php/service.php",
+            //url:"http://localhost/skidxjq/php/service.php",
+            url:$scope.config.baseUrl+"/huaxi/OperateScore",
             dataType:"jsonp",
             data:$scope.formData,
             jsonp:"callback",
             //jsonpCallback:$scope.drawEcharts,
             success:function(response){
+
                 var $jsonData=eval(response);
                 $scope.drawEcharts($jsonData);
+                $scope.closeModal();
             }
         });
 
     };
+    /*
+    * 切换医院select事件
+    * */
+    $("#hospitalSets").bind("change",function(){
+        console.log("change");
+    })
+
     //对响应的数据进行绘制
     $scope.drawEcharts=function($jsonData){
         $scope.echartsOption.yAxis[0].data=$jsonData["axis"];
@@ -144,7 +156,6 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStor
         window.onresize= $scope.echarts.resize;
         $localStorage.singleHospitalformData.hospitalSets=$jsonData["content"];
         $scope.echarts.setOption($scope.echartsOption,true);
-
     };
     $scope.callBackFunc=function($params){
         //console.log(444);
@@ -155,6 +166,6 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStor
         //window.location.href="#/hospitalSingleDiseaseAnalyzeResult";
         window.location.href="#/hospitalSingleDiseaseAnalyzeResult";
 
-    }
+    };
 
 }]);

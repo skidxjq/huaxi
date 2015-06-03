@@ -144,9 +144,14 @@
                 </div>
                 <label class="col-lg-1" ng-bind="formData.w7">2</label>
             </div>
-            <div class="form-inline row">
-                <div class="col-lg-offset-7 col-lg-10 text-2x">
+            <div class="form-inline row" >
+                <!--<div class="col-lg-offset-7 col-lg-10 text-2x" ng-controller="ModalDemoCtrl">-->
+                <div class="col-lg-offset-7 col-lg-10 text-2x" >
+                    <script type="text/ng-template" id="myModalContent.html">
+                    <div ng-include="'tpl/modal.html'"></div>
+                    </script>
                     <button type="submit" class="btn btn-sm btn-info" ng-click="optionSubmit();">提交</button>
+                    <!--<button type="submit" class="btn btn-sm btn-info" ng-click="open()">提交</button>-->
                 </div>
             </div>
 
@@ -161,8 +166,22 @@
 
     </div>
 </div>
+<button class="btn btn-default" ng-click="openModal()">Open me!</button>
+<button class="btn btn-default" ng-click="closeModal()">close me!</button>
 
 
+<!--<div class="panel b-a">-->
+<!--<div ng-controller="ModalDemoCtrl" class="panel b-a">-->
+    <!--<script type="text/ng-template" id="myModalContent.html">-->
+        <!--<div ng-include="'tpl/modal.html'"></div>-->
+    <!--</script>-->
+    <!--<div class="panel-heading b-b b-light">Modal</div>-->
+    <!--<div class="panel-body">-->
+        <!--<button class="btn btn-success" ng-click="open()">Open me!</button>-->
+        <!--<button class="btn btn-default" ng-click="open('lg')">Large modal</button>-->
+        <!--<button class="btn btn-default" ng-click="open('sm')">Small modal</button>-->
+    <!--</div>-->
+<!--</div>-->
 
 <!--<div class="col-lg-7 content-echarts" >-->
     <!--<h4>成都市三甲医院恶性肿瘤疾病基金效率使用排名</h4>-->
