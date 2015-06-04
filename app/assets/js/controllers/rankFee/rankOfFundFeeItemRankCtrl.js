@@ -2,8 +2,6 @@
  * Created by mac on 15-5-29.
  */
 app.controller('rankOfFundFeeItemRankCtrl', ['$scope','$http',function($scope,$http) {
-    $scope.colorSets=["#eee","red","pink","#7266ba","#fad733","green","#23b7e5","#27c24c","#dff0d8","#E0FFFF","#C0FF3E","#8B2500"];
-    $scope.$i=0;
     $scope.hugeFeeAnalyzePieOption = {
 
         tooltip : {
@@ -127,9 +125,9 @@ app.controller('rankOfFundFeeItemRankCtrl', ['$scope','$http',function($scope,$h
                 barWidth:30,
                 itemStyle:{
                     normal:{
-                        color:function(){
-                            //return $scope.colorSets[($scope.$i++)%12];
-                            return $scope.colorSets[($scope.$i++)%12];
+                        color:function(params){
+                            //return $scope.colorSets[params.dataIndex];
+                            return $scope.colorSets[params.dataIndex];
                         }
                         //,
                         //label:{

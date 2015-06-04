@@ -298,8 +298,8 @@
                 <li role="presentation" id="li-efficencyAnalyze"><a href="#/efficencyAnalyze"><i class="glyphicon glyphicon-briefcase"></i> 医院效率分析</a></li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
-                        <!--<i class="glyphicon glyphicon-book"></i> -->
-                        <i class="icon icon-spinner icon-spin  "></i>
+                        <i class="glyphicon glyphicon-book"></i>
+                        <!--<i class="icon icon-spinner icon-spin  "></i>-->
                         单病种效率分析 <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu nav nav-pills" role="menu">
@@ -315,9 +315,12 @@
         </div>
         <div ng-view></div>
 
+        <!--<div data-ng-include=" 'tpl/blocks/footer.html' ">-->
 
+        <!--</div>-->
     </div>
-</div>
+
+
 
 
 <!--load js in the end -->
@@ -334,8 +337,9 @@
 
 <script src="view2/view2.js"></script>
 <script src="assets/js/controllers/headerCtrl.js"></script>
-<script src="assets/js/controllers/hospitalEfficency/efficencyAnalyzeCtrl.js"></script>
-<script src="assets/js/controllers/hospitalEfficency/efficencyAnalyzeSingleCtrl.js"></script>
+<script src="assets/js/services/bookService.js"></script>
+<script src="assets/js/controllers/hospitalAll/efficencyAnalyzeCtrl.js"></script>
+<script src="assets/js/controllers/hospitalAll/efficencyAnalyzeSingleCtrl.js"></script>
 <script src="assets/js/controllers/doctor/doctorSingleDiseaseAnalyzeCtrl.js"></script>
 <script src="assets/js/controllers/doctor/doctorSingleDiseaseAnalyzeResultCtrl.js"></script>
 <script src="assets/js/controllers/hospital/hospitalSingleDiseaseAnalyzeResultCtrl.js"></script>

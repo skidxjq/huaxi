@@ -2,30 +2,35 @@
  * Created by mac on 15-5-29.
  */
 app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$localStorage',function($scope,$http,$modal,$localStorage) {
-    console.log($modal);
-    $scope.getEcharts=function(){
-        console.log($scope.formData);
-    };
+
 
     $scope.echartsTitle="基金效率使用排名";
     $scope.index=1;
-    $scope.formData={
-        "hospitalType" : "0101",
-        "diseaseType" : "A00.101",
-        "startTime" : "2011",
-        "endTime" : "2011",
-        "village" : "false",
-        "city" : "false",
-        "limitNum" : "10",
-        "w1" : "5",
-        "w2" : "5",
-        "w3" : "5",
-        "w4" : "5",
-        "w5" : "5",
-        "w6" : "5",
-        "w7" : "5"
-    };
+    $localStorage.singleHospitalqueryData==undefined?
+        $scope.formData={
+            "hospitalType" : "0101",
+            "diseaseCategory":"1",
+            "diseaseType" : "A00.101",
+            "startTime" : "2011",
+            "endTime" : "2011",
+            "village" : "false",
+            "city" : "false",
+            "limitNum" : "10",
+            "w1" : "5",
+            "w2" : "5",
+            "w3" : "5",
+            "w4" : "5",
+            "w5" : "5",
+            "w6" : "5",
+            "w7" : "5"
+        }:
+        $scope.formData=$localStorage.singleHospitalqueryData
+    ;
+    //$scope.formData=$localStorage.singleHospitalqueryData;
+    console.log($scope.formData);
 
+
+    console.log($scope.formData);
     //生成联动菜单
     $scope.$watch('formData.diseaseCategory',function(newValue,oldValue,scope){
         //console.log(newValue);
@@ -51,12 +56,7 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
         toolbox: {
             show: false
         },
-        grid: {
-            x: 150,
-            y: 10,
-            x2: 10,
-            y2: 55
-        },
+        grid: $scope.config.echarts.grid.xs,
         padding: 0,
         calculable: true,
         yAxis: [
@@ -98,9 +98,9 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
                 type: 'bar',
                 itemStyle:{
                     normal:{
-                        color:function(){
+                        color:function(params){
                             //return $scope.colorSets[$scope.$i++];
-                            return $scope.colorSets[($scope.$i++)%12];
+                            return $scope.colorSets[params.dataIndex];
 
                         }
                     }
@@ -136,6 +136,11 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
             success:function(response){
 
                 var $jsonData=eval(response);
+                $localStorage.singleHospitalqueryData=$scope.formData;
+                console.log("$######");
+                console.log($localStorage.singleHospitalqueryData);
+                console.log("$######");
+
                 $scope.drawEcharts($jsonData);
                 $scope.closeModal();
             }
@@ -151,10 +156,9 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
 
     //对响应的数据进行绘制
     $scope.drawEcharts=function($jsonData){
-        $scope.echartsOption.yAxis[0].data=$jsonData["axis"];
-        $scope.echartsOption.series[0].data=$jsonData["series"][0];
+        $scope.echartsOption.yAxis[0].data=$jsonData["axis"].reverse();
+        $scope.echartsOption.series[0].data=$jsonData["series"][0].reverse();
         window.onresize= $scope.echarts.resize;
-        $localStorage.singleHospitalformData.hospitalSets=$jsonData["content"];
         $scope.echarts.setOption($scope.echartsOption,true);
     };
     $scope.callBackFunc=function($params){

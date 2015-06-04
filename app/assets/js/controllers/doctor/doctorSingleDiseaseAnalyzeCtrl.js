@@ -3,37 +3,84 @@
  */
 app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorage',function($scope,$http,$localStorage) {
 
-    $scope.getEcharts=function(){
-        console.log($scope.formData);
-    };
     $scope.index=1;
-    $scope.formData={
-        "hospitalType" : "0101",
-        "diseaseType" : "A00.101",
-        "startTime" : "2011",
-        "endTime" : "2011",
-        "village" : "false",
-        "city" : "false",
-        "limitNum" : "10",
-        "w1" : "5",
-        "w2" : "5",
-        "w3" : "5",
-        "w4" : "5",
-        "w5" : "5",
-        "w6" : "5",
-        "w7" : "5"
+    $scope.echartsTitle="基金效率使用排名";
+
+    //$scope.formData={
+    //    "hospitalType" : "0101",
+    //    "diseaseType" : "A00.101",
+    //    "startTime" : "2011",
+    //    "endTime" : "2011",
+    //    "village" : "false",
+    //    "city" : "false",
+    //    "limitNum" : "10",
+    //    "w1" : "5",
+    //    "w2" : "5",
+    //    "w3" : "5",
+    //    "w4" : "5",
+    //    "w5" : "5",
+    //    "w6" : "5",
+    //    "w7" : "5"
+    //};
+    $localStorage.singleDoctorqueryData==undefined?
+        $scope.formData={
+            "hospitalType" : "0101",
+            "diseaseCategory":"1",
+            "diseaseType" : "A00.101",
+            "startTime" : "2011",
+            "endTime" : "2011",
+            "village" : "false",
+            "city" : "false",
+            "limitNum" : "10",
+            "w1" : "5",
+            "w2" : "5",
+            "w3" : "5",
+            "w4" : "5",
+            "w5" : "5",
+            "w6" : "5",
+            "w7" : "5"
+        }:
+        $scope.formData=$localStorage.singleDoctorqueryData
+    ;
+    $scope.optionSubmit=function(){
+        $scope.openModal();
+        $scope.formData.diseaseName=$("#diseaseName").find("option:selected").text();
+        //更改title
+        $scope.echartsTitle="四川"+$scope.formDataMap.hospitalType[$scope.formData.hospitalType]+$scope.formData.diseaseName+"基金效率使用排名";
+
+        console.log($scope.formData);
+        $localStorage.singleDoctorformData=$scope.formData;
+        console.log($localStorage);
+
+        //已经测试通过
+        $.ajax({
+            type:"GET",
+            //url:"http://localhost/skidxjq/php/service.php",
+            url:$scope.config.baseUrl+"/huaxi/doctor/DoctorScore",
+            dataType:"jsonp",
+            data:$scope.formData,
+            jsonp:"callback",
+            //jsonpCallback:$scope.drawEcharts,
+            success:function(response){
+                $localStorage.singleDoctorqueryData=$scope.formData;
+
+                var $jsonData=eval(response);
+                $scope.drawEcharts($jsonData);
+                $scope.closeModal();
+            }
+        });
+
     };
 
-    //生成联动菜单
-    $scope.$watch('formData.diseaseCategory',function(newValue,oldValue,scope){
-        //console.log(newValue);
-        $scope.index=newValue;
-    });
-    //$scope.echartsOption={
-    //    //legend
-    //    //to do
-    //};
 
+    //对响应的数据进行绘制
+    $scope.drawEcharts=function($jsonData){
+        console.log("into drawecharts");
+        $scope.echartsOption.yAxis[0].data=$jsonData["axis"].reverse();
+        $scope.echartsOption.series[0].data=$jsonData["series"][0].reverse();
+        window.onresize= $scope.echarts.resize;
+        $scope.echarts.setOption($scope.echartsOption,true);
+    };
 
     $scope.echartsOption = {
         version: 1,
@@ -48,12 +95,8 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
         toolbox: {
             show: false
         },
-        grid: {
-            x: 50,
-            y: 10,
-            x2: 10,
-            y2: 55
-        },
+        //grid: $scope.config.echarts.grid,
+        grid:$scope.config.echarts.grid.xs,
         padding: 0,
         calculable: true,
         yAxis: [
@@ -78,9 +121,9 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
                 type: 'bar',
                 itemStyle:{
                     normal:{
-                        color:function(){
+                        color:function(params){
                             //return $scope.colorSets[$scope.$i++];
-                            return $scope.colorSets[($scope.$i++)%12];
+                            return $scope.colorSets[params.dataIndex];
 
                         }
                     }
@@ -94,45 +137,13 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
             $scope.echarts=chartApi.getInstance();
         }
     };
-    $scope.optionSubmit=function(){
-        $scope.formData.diseaseName=$("#diseaseName").find("option:selected").text();
-        console.log($scope.formData);
-        $localStorage.formData=$scope.formData;
-        console.log($localStorage);
-
-        //已经测试通过
-        //$.ajax({
-        //    type:"GET",
-        //    url:"http://localhost/skidxjq/php/service.php",
-        //    dataType:"jsonp",
-        //    data:$scope.formData,
-        //    jsonp:"callback",
-        //    //jsonpCallback:$scope.drawEcharts,
-        //    success:function(response){
-        //        var $jsonData=eval(response);
-        //        $scope.drawEcharts($jsonData);
-        //    }
-        //});
-
-    };
-    //对响应的数据进行绘制
-    $scope.drawEcharts=function($jsonData){
-        $scope.echartsOption.yAxis[0].data=$jsonData["axis"];
-        $scope.echartsOption.series[0].data=$jsonData["series"][0];
-        window.onresize= $scope.echarts.resize;
-
-        $scope.echarts.setOption($scope.echartsOption,true);
-
-    };
     $scope.callBackFunc=function($params){
-        //console.log(444);
-        //console.log($params);
-
-        $localStorage.formData.doctor=$params["name"];
+        $localStorage.singleDoctorformData.doctor=$params["name"];
         //$localStorage.formData=$scope.formData;
         //window.location.href="#/doctorSingleDiseaseAnalyzeResult";
         window.location.href="#/doctorSingleDiseaseAnalyzeResult";
 
     }
+
 
 }]);

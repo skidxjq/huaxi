@@ -13,8 +13,8 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
         $(this).addClass("active");
     })
     /*
-    * 路由切换事件
-    * */
+     * 路由切换事件
+     * */
 
     var locationChangeStartOff = $rootScope.$on('$locationChangeStart', locationChangeStart);
     var locationChangeSuccessOff = $rootScope.$on('$locationChangeSuccess', locationChangeSuccess);
@@ -32,8 +32,8 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
     //console.log($location.absUrl());
     //$scope.urlPath=$location.absUrl();
     /*
-    * 获取相对路径
-    * */
+     * 获取相对路径
+     * */
     $scope.getRelativePath=function($path){
         var $pathArr=$path.split("/");
         return $pathArr[$pathArr.length-1];
@@ -158,7 +158,8 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
         }
     }
     $scope.config={};
-    $scope.config.baseUrl="http://10.20.1.12:8070";
+    //$scope.config.baseUrl="http://10.20.1.12:8070";
+    $scope.config.baseUrl="http://localhost/skidxjq/php";
     $scope.config.echarts={};
     $scope.config.echarts.legend=[
         ["就诊次数","次均费用","并发症用户占比","次均住院时长","住院时长标准差","再次入院间隔/费用","病情好转指标"]
@@ -170,6 +171,39 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
             y: 10,
             x2: 40,
             y2: 55
+        },
+        "xs":{
+            x: 150,
+            y: 10,
+            x2: 10,
+            y2: 55
+        }
+    };
+    //克隆对象
+    $scope.config.echarts.clone = function(sObj){
+        if(typeof sObj !== "Object"){
+            return sObj;
+        }
+        var s = {};
+        if(sObj.constructor == Array){
+            s = [];
+        }
+        for(var i in sObj){
+            s[i] =  $scope.config.echarts.clone(sObj[i]);
+        }
+        return s;
+    };
+    //扩展对象 param 目的对象 源对象
+    $scope.config.echarts.extend = function(tObj,sObj){
+        for(var i in sObj){
+            if(typeof sObj[i] !== "Object"){
+                tObj[i] = sObj[i];
+            }else if (sObj[i].constructor == Array){
+                tObj[i] =  $scope.config.echarts.clone(sObj[i]);
+            }else{
+                tObj[i] = tObj[i] || {};
+                $scope.config.echarts.extend(tObj[i],sObj[i]);
+            }
         }
     };
 
@@ -183,8 +217,162 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
         echarts.setOption(options);
         console.log(options);
         options.version++;
-    }
-    //颜色集合 echarts专用
+    };
+    //画scatter
+    $scope.config.echarts.drawScatter=function(options,echarts,jsonData){
+        console.log("@@@@@@@@@");
+        console.log(jsonData);
+        options.series[0].data=jsonData["series"][0]["data"];
+        echarts.setOption(options);
+    };
+
+    //
+    $scope.config.echarts.templateOptions={
+    "smallBar":
+    {
+        version: 1,
+
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['RANK'],
+            show:false,
+            y: 'bottom'
+        },
+        toolbox: {
+            show: false
+        },
+        grid: {
+            x: 30,
+            y: 10,
+            x2: 30,
+            y2: 55
+        },
+        padding: 0,
+        calculable: true,
+        xAxis: [
+            {
+                //axisLabel: {
+                //    interval: 0
+                //},
+                axisLabel : {
+
+                    interval: 0,
+                    textStyle : {
+                        fontSize : 10
+                    },
+                    clickable:true,
+
+                    formatter: function(value){
+                        var res='';
+                        for(var i=0, l=value.length;i<l;i++){
+                            res+=value[i];
+                            if((i<(l-1)) && ((i+1)%4==0)){
+                                res=res+"\n";//就是这里！！！
+
+                                //每次都是把<br/>当成实际的字符串去处理而没起到换行的作用
+                            }
+                        }
+                        return res;
+                    },
+                    margin:20
+                },
+                type: 'category',
+                data: ['疾病1', '疾病2','疾病3','疾病4','疾病5']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                splitArea: {show: true}
+            }
+        ],
+        series: [
+
+            {
+                name: 'RANK',
+                type: 'bar',
+                barWidth:30,
+                itemStyle:{
+                    normal:{
+                        color:function(params){
+                            //return $scope.colorSets[params.dataIndex];
+                            return $scope.colorSets[params.dataIndex];
+                        }
+                        //,
+                        //label:{
+                        //    show:fa,
+                        //    position:"right"
+                        //}
+                    }
+                },
+                data: [18, 11, 9,7,3]
+            }
+        ]
+        //,
+        //onRegisterApi: function (chartApi) {
+        //    efficencyRank_RightLeft_OptionApi = chartApi;
+        //    efficencyRank_RightLeft_OptionApi.registerBarClicked($scope,$scope.clickEvent);
+        //
+        //    //chartPro
+        //}
+    },
+    "scatter":{
+        version: 1,
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['RANK'],
+            show:false,
+            y: 'bottom'
+        },
+        toolbox: {
+            show: false
+        },
+        grid: {
+            x: 30,
+            y: 10,
+            x2: 30,
+            y2: 55
+        },
+        padding: 0,
+        calculable: true,
+
+        xAxis: [
+            {
+                type: 'value',
+                scale:true,
+                splitArea: {show: true}
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                scale:true,
+                splitArea: {show: true}
+            }
+        ],
+        series: [
+
+            {
+                name: 'RANK',
+                type: 'scatter',
+
+                data: [[161.2, 51.6], [167.5, 59.0], [159.5, 49.2], [157.0, 63.0], [155.8, 53.6],
+                    [170.0, 59.0], [159.1, 47.6], [166.0, 69.8], [176.2, 66.8], [160.2, 75.2],
+                    [172.5, 55.2], [170.9, 54.2], [172.9, 62.5], [153.4, 42.0], [160.0, 50.0],
+                    [147.2, 49.8], [168.2, 49.2], [175.0, 73.2], [157.0, 47.8], [167.6, 68.8],
+                    [159.5, 50.6], [175.0, 82.5], [166.8, 57.2], [176.5, 87.8], [170.2, 72.8],
+                    [174.0, 54.5], [173.0, 59.8], [179.9, 67.3], [170.5, 67.8], [160.0, 47.0],
+                    [154.4, 46.2], [162.0, 55.0], [176.5, 83.0], [160.0, 54.4], [152.0, 45.8],
+                    [162.1, 53.6]]
+            }
+        ]}
+    };
+
+        //颜色集合 echarts专用
     $scope.$i=0;
     $scope.colorSets=["#eee","red","pink","#7266ba","#fad733","green","#23b7e5","#27c24c","#dff0d8","#E0FFFF","#C0FF3E","#8B2500"];
     //医院类型的集合
@@ -256,9 +444,6 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
     };
     $scope.openModal = function () {
         console.log($modal);
-        //console.log($scope);
-//        //$scope.
-//        //$scope.drawEcharts();
         $scope.modalInstance = $modal.open({
             templateUrl: 'tpl/modal.html',
             controller: 'ModalInstanceCtrl',
@@ -275,34 +460,11 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
         $scope.modalInstance.result.then(
             function (selectedItem) {
                 console.log("click ok");
-                //$scope.selected = selectedItem;
-                //$scope.drawEcharts();
 
             },
             function () {
-                //$log.info('Modal dismissed at: ' + new Date());
             });
-        //$scope.close();
-        //$scope.modalInstance.dismiss("dddd");
-        //console.log($);c c
     };
-
 }]);
 app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function($scope, $modalInstance) {
-    //$scope.items = items;
-    //$scope.selected = {
-    //    item: $scope.items[0]
-    //};
-    console.log($scope);
-    console.log($scope.colorSets);
-    //$scope.ok = function () {
-    //    $modalInstance.close($scope.selected.item);
-    //};
-    //
-    $scope.cancel = function () {
-        console.log("66666");
-        $modalInstance.dismiss('cancel');
-    };
-    //setTimeout(function(){$scope.cancel()},5000);
-
 }]);

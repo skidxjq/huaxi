@@ -26,7 +26,19 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
         yAxis: [
             {
                 axisLabel: {
-                    interval: 0
+                    interval: 0,
+                    formatter: function(value){
+                        var res='';
+                        for(var i=0, l=value.length;i<l;i++){
+                            res+=value[i];
+                            if((i<(l-1)) && ((i+1)%4==0)){
+                                res=res+"\n";//就是这里！！！
+
+                                //每次都是把<br/>当成实际的字符串去处理而没起到换行的作用
+                            }
+                        }
+                        return res;
+                    }
                 },
                 type: 'category',
                 //data: ['王伟伟', '李建平', '李丹', '王思敏', '孙承宗', '张咖喱', '王建', '庞涛', '欧阳晨', '赵光']
@@ -46,9 +58,9 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
                 type: 'bar',
                 itemStyle:{
                     normal:{
-                        color:function(){
+                        color:function(params){
                             //return $scope.colorSets[$scope.$i++];
-                            return $scope.colorSets[($scope.$i++)%12];
+                            return $scope.colorSets[params.dataIndex];
                         }
                     }
                 },
@@ -68,16 +80,16 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
     //$scope.formData.hospitalId=0;
 
     //画左侧图 参数医院名称
-    $scope.onSelectChange=function(hospital){
+    $scope.onSelectChange=function(){
 
-        $scope.drawLeftEcharts(hospital);
+        $scope.drawLeftEcharts();
         $scope.drawRightEcharts();
 
     }
-    $scope.drawLeftEcharts=function(hospital){
+    $scope.drawLeftEcharts=function(){
 
         //已经测试通过
-        $data={"hnameString":hospital};
+        $data={"hnameString":$("#hospitalSets").find("option:selected").text()};
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
@@ -171,7 +183,7 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
 
         $scope.openModal();
 
-        $scope.drawLeftEcharts($scope.queryData.hospital);
+        $scope.drawLeftEcharts();
         $scope.drawRightEcharts();
         $scope.getHospitalSets();
 
@@ -183,8 +195,9 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
     * */
     $("#hospitalSets").bind("change",function(){
         var hospital=$("#hospitalSets").find("option:selected").text();
-        $scope.onSelectChange(hospital);
         $localStorage.singleHospitalformData.hospital=hospital;
+
+        $scope.onSelectChange();
         //$scope.queryData.hospital=hospital;
 
 
@@ -232,9 +245,9 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
                 type: 'bar',
                 itemStyle:{
                     normal:{
-                        color:function(){
+                        color:function(params){
                             //return $scope.colorSets[$scope.$i++];
-                            return $scope.colorSets[($scope.$i++)%12];
+                            return $scope.colorSets[params.dataIndex];
 
                         }
                     }

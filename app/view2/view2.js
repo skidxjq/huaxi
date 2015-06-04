@@ -9,7 +9,8 @@
 //  });
 //}])
 
-app.controller('View2Ctrl', ['$scope','$http','$modal','$localStorage',function($scope,$http,$modal,$localStorage) {
+app.controller('View2Ctrl', ['$scope','$http','$modal','$localStorage','Book',function($scope,$http,$modal,$localStorage,$Book) {
+    console.log($Book);
     console.log($modal);
 
 }]);

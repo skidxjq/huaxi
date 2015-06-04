@@ -63,16 +63,26 @@ var app=angular.module('myApp', [
                 //controller: 'View1Ctrl'
             })
             .when('/view2', {
-              templateUrl: 'view2/view2.html',
-              controller: 'View2Ctrl'
+                templateUrl: 'view2/view2.html',
+                controller: 'View2Ctrl'
+                ,resolve: {
+                    deps: ['$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            console.log("33333");
+                            return ($ocLazyLoad).load([
+                                'assets/js/services/bookService.js'
+                            ]);
+
+                        }]
+                }
             })
             .when('/efficencyAnalyze', {
-                templateUrl: 'tpl/hositalEfficency/efficencyAnalyze.html',
+                templateUrl: 'tpl/hospitalAll/efficencyAnalyze.html',
                 controller: 'efficencyAnalyzeCtrl'
 
             })
             .when('/efficencyAnalyzeSingle', {
-                templateUrl: 'tpl/hositalEfficency/efficencyAnalyzeSingle.html',
+                templateUrl: 'tpl/hospitalAll/efficencyAnalyzeSingle.html',
                 controller: 'efficencyAnalyzeSingleCtrl'
 
             })
