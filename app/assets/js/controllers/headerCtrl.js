@@ -368,7 +368,7 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
 
         //颜色集合 echarts专用
     $scope.$i=0;
-    $scope.colorSets=["#eee","red","pink","#7266ba","#fad733","green","#23b7e5","#27c24c","#dff0d8","#E0FFFF","#C0FF3E","#8B2500"];
+    $scope.colorSets=["#EE9A49","red","pink","#7266ba","#fad733","green","#23b7e5","#27c24c","#dff0d8","#E0FFFF","#C0FF3E","#8B2500"];
     //医院类型的集合
 
 
