@@ -115,6 +115,8 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
     $scope.config.echarts.extend($scope.rightRightEchartsOption,$scope.config.echarts.templateOptions.smallBar);
 
     $scope.drawRightRightEcharts=function(){
+        $data={"hnameString":"华西医院","idString":818993,"top10":5,"Descend":false};
+
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
@@ -135,6 +137,8 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
 
 
     $scope.drawRightLeftEcharts=function(){
+        $data={"hnameString":"华西医院","idString":818993,"top10":5,"Descend":false};
+
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
@@ -155,6 +159,7 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
     };
 
     $scope.drawScatterEcharts=function(){
+        $data={"hnameString":"华西医院","idString":818993,"top10":5,"Descend":false};
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
