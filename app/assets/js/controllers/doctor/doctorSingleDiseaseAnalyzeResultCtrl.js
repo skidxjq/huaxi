@@ -172,6 +172,7 @@ app.controller('doctorSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$local
                 //$scope.drawEcharts($jsonData);
                 $scope.formData.doctorSets=$jsonData;
                 console.log($scope.formData.doctorSets);
+                $scope.$apply();
                 $scope.closeModal();
 
             },

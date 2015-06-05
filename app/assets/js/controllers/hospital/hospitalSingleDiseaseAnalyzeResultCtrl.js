@@ -170,6 +170,7 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
                 //$scope.drawEcharts($jsonData);
                 $scope.formData.hospitalSets=$jsonData;
                 console.log($scope.formData.hospitalSets);
+                $scope.$apply();
                 $scope.closeModal();
 
             },
