@@ -147,59 +147,6 @@ app.controller('rankOfFundFeeItemRankCtrl', ['$scope','$http',function($scope,$h
         }
     };
 
-    //$scope.hugeFeeAnalyzePieOption = {
-    //    version: 1,
-    //    tooltip : {
-    //        show:true,
-    //        trigger: 'item',
-    //        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    //    },
-    //    legend: {
-    //        orient:'vertical',
-    //        itemGap:15,
-    //        //data:
-    //        y: 'bottom',
-    //        x:'right'
-    //    },
-    //    toolbox: {
-    //        show: false
-    //    },
-    //
-    //    padding: 0,
-    //    calculable: true,
-    //
-    //    series: [
-    //
-    //        {
-    //            name: '号码地区分布',
-    //            type: 'pie',
-    //            smooth: true,
-    //            radius:'90%',
-    //            itemStyle:{
-    //                normal: {
-    //                    label: {
-    //                        show: false
-    //                    },
-    //                    labelLine: {
-    //                        show: false
-    //                    }
-    //                }
-    //            },
-    //            center:['40%','50%'],
-    //            data:
-    //                [
-    //                {value:335,name:'3G网络流量(GB)'},
-    //                {value:333,name:'3G网络上周流量均值(GB)'},
-    //                {value:0,name:'4G'},
-    //                {value:0,name:'5G'}
-    //            ]
-    //        }
-    //    ],
-    //    onRegisterApi: function (chartApi) {
-    //        $scope.hugeFeeAnalyzePieOptionApi=chartApi;
-    //        $scope.hugeFeeAnalyzePieOptionApi.showLoading("正在加载中");
-    //    }
-    //};
     console.log($scope);
 
 }]);

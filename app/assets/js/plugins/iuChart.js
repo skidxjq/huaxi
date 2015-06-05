@@ -41,16 +41,16 @@ angular.module('iu',[])
             option.onRegisterApi(api);
           }
 
-          //if(angular.isDefined(scope.iuChart.version)){
-          //  watch = scope.$watch('iuChart.version',function(newValue,oldValue){
-          //    if(newValue !== oldValue) {
-          //      console.log("change version");
-          //      chart.setOption(option,true);
-          //      chart.hideLoading();
-          //
-          //    }
-          //  });
-          //}
+          if(angular.isDefined(scope.iuChart.version)){
+            watch = scope.$watch('iuChart.version',function(newValue,oldValue){
+              if(newValue !== oldValue) {
+                console.log("change version");
+                chart.setOption(option,true);
+                chart.hideLoading();
+
+              }
+            });
+          }
 
           scope.$on('$destroy', function () {
             if (watch) {

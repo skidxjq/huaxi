@@ -115,7 +115,7 @@ var app=angular.module('myApp', [
                         function ($ocLazyLoad) {
                             console.log("33333");
                             return ($ocLazyLoad).load([
-                                'assets/js/controllers/rankOfFundFeeItemRankCtrl.js'
+                                'assets/js/controllers/rankFee/rankOfFundFeeItemRankCtrl.js'
                             ]);
 
                         }]

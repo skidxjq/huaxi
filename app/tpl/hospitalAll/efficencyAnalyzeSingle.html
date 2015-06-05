@@ -6,12 +6,18 @@
                 <div class="row form-inline row m-b-xs clearfix">
                     <label class="pull-left m-l my-label" >当前医院:</label>
                     <div class="col-lg-8">
-                        <!--<select id="u0_input" data-label="xiala-dengji">-->
+                        <!--&lt;!&ndash;<select id="u0_input" data-label="xiala-dengji">&ndash;&gt;-->
                         <select class="form-control " style="width:100%;" id="hospitalSets" ng-model="formData.hospitalId" >
                             <!--<option value="">{{queryData.hospital}}</option>-->
                             <!--to do-->
                             <option ng-repeat="obj in formData.hospitalSets" ng-selected="obj.hnameString==queryData.hospital" value="2">{{obj.hnameString}}</option>
                         </select>
+                         <!--<select class="form-control " ng-options="item as item.hnameString for item in formData.hospitalSets"-->
+                                 <!--style="width:100%;" id="hospitalSets" ng-model="formData.hospitalId" >-->
+                            <!--&lt;!&ndash;<option value="">{{queryData.hospital}}</option>&ndash;&gt;-->
+                            <!--&lt;!&ndash;to do&ndash;&gt;-->
+                        <!--</select>-->
+
                     </div>
                 </div>
                 <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->

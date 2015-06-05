@@ -7,7 +7,7 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
     $scope.queryData=$localStorage.allHospitalqueryData;
     //$scope.hospitalName=$localStorage.allHospitalqueryData.hospital;
     $scope.formData={
-        hospitalId:"111"
+        "hospitalSets":{}
     };
     console.log($scope.queryData);
 
@@ -233,7 +233,10 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
                 var $jsonData=eval(response);
                 //$scope.drawEcharts($jsonData);
                 $scope.formData.hospitalSets=$jsonData;
-                console.log($scope.formData.hospitalSets);
+                $scope.formData.hospitalId=$scope.formData.hospitalSets[0];
+                console.log("setting sets complete!");
+                $scope.$apply();
+                //console.log($scope.formData.hospitalSets);
                 //$scope.closeModal();
 
             },
