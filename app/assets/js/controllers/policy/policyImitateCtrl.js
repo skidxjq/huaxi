@@ -4,10 +4,9 @@
 app.controller('policyImitateCtrl', ['$scope','$http','$localStorage','NgTableParams',function($scope,$http,$localStorage,NgTableParams) {
     //console.log(NgTableParams);
     //console.log(23423424);
-    var data = [
+    var tableData={"dataTop":[],"dataLeft":[],"dataRight":[]};
 
-    ];
-    $scope.getData=function(){
+    $scope.getTopData=function(){
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
@@ -19,16 +18,17 @@ app.controller('policyImitateCtrl', ['$scope','$http','$localStorage','NgTablePa
             success:function(response){
 
                 var $jsonData=eval(response);
-                var data=$jsonData;
-                console.log(data);
-                $scope.tableParams = new NgTableParams({
+                //var data1=$jsonData;
+                tableData.dataTop=$jsonData;
+                //console.log(data1);
+                $scope.topTableParams = new NgTableParams({
                     page: 1,            // show first page
                     count: 3           // count per page
                 }, {
 
-                    total: data.length, // length of data
+                    total: tableData.dataTop.length, // length of data
                     getData: function($defer, params) {
-                        $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                        $defer.resolve(tableData.dataTop.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                     }
                 });
                 $scope.$apply();
@@ -36,8 +36,69 @@ app.controller('policyImitateCtrl', ['$scope','$http','$localStorage','NgTablePa
         });
     };
 
+    $scope.getLeftData=function(){
+        $.ajax({
+            type:"GET",
+            //url:"http://localhost/skidxjq/php/service.php",
+            url:$scope.config.baseUrl+"/huaxi/hospital/policy/",
+            dataType:"jsonp",
+            data:$scope.formData,
+            jsonp:"callback",
+            //jsonpCallback:$scope.drawEcharts,
+            success:function(response){
 
-    $scope.getData();
+                var $jsonData=eval(response);
+                //var data1=$jsonData;
+                tableData.dataLeft=$jsonData;
+                //console.log(data1);
+                $scope.leftTableParams = new NgTableParams({
+                    page: 1,            // show first page
+                    count: 3           // count per page
+                }, {
+
+                    total: tableData.dataLeft.length, // length of data
+                    getData: function($defer, params) {
+                        $defer.resolve(tableData.dataLeft.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
+                $scope.$apply();
+            }
+        });
+    };
+    $scope.getRightData=function(){
+        $.ajax({
+            type:"GET",
+            //url:"http://localhost/skidxjq/php/service.php",
+            url:$scope.config.baseUrl+"/huaxi/hospital/policy/",
+            dataType:"jsonp",
+            data:$scope.formData,
+            jsonp:"callback",
+            //jsonpCallback:$scope.drawEcharts,
+            success:function(response){
+
+                var $jsonData=eval(response);
+                //var data1=$jsonData;
+                tableData.dataRight=$jsonData.slice(7);
+                //console.log(data1);
+                $scope.rightTableParams = new NgTableParams({
+                    page: 1,            // show first page
+                    count: 3           // count per page
+                }, {
+
+                    total: tableData.dataRight.length, // length of data
+                    getData: function($defer, params) {
+                        console.log(params);
+                        $defer.resolve(tableData.dataRight.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
+                $scope.$apply();
+            }
+        });
+    };
+
+    $scope.getTopData();
+    $scope.getLeftData();
+    $scope.getRightData();
 
 
     //setTimeout(function(){$scope.getData()},5000);

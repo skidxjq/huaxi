@@ -280,7 +280,7 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
                     margin:20
                 },
                 type: 'category',
-                data: ['疾病1', '疾病2','疾病3','疾病4','疾病5']
+                data: ["","","","",""]
             }
         ],
         yAxis: [

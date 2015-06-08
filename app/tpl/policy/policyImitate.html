@@ -57,15 +57,20 @@
     </form>
 
 </div>
-<div class="row">
+
+<div class="row panel panel-default m-t">
+    <div class="panel-heading">
+        支付限价&自付比例调整数据
+    </div>
+    <div class="panel-body">
     <div class="row">
         <form class="form-horizontal ">
             <div class="row m-t-sm" >
                 <div class="col-lg-2-4 m-l ">
 
                     <div class="row form-inline row m-b-xs clearfix">
-                        <label class="pull-left m-l my-label" >收费项目大类:</label>
-                        <div class="col-lg-5">
+                        <label class="pull-left m-l n-p" >收费项目大类:</label>
+                        <div class="col-lg-5 n-p">
                             <!--<select id="u0_input" data-label="xiala-dengji">-->
                             <select class="form-control " style="width:100%;">
 
@@ -76,21 +81,16 @@
                     </div>
                     <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
                 </div>
-                <div class="col-lg-4 m-l ">
+                <div class="col-lg-3  ">
 
                     <div class="row form-inline row m-b-xs clearfix">
-                        <label class="pull-left m-l my-label" >子类名称:</label>
-                        <div class="col-lg-8" style="margin-top:-7px;">
-                            <label class="checkbox-inline i-checks">
-                                <input type="checkbox" value="option1"><i></i>
-                            </label>
-                            <label class="checkbox-inline i-checks">
-                                <input type="checkbox" value="option2"><i></i> 城镇
-                            </label>
-                            <label class="checkbox-inline i-checks">
-                                <input type="checkbox" value="option2"><i></i> 大病补充
-                            </label>
+                        <label class="pull-left m-l n-p" >子类名称:</label>
+                        <div class="col-lg-6 n-p">
+                            <!--<select id="u0_input" data-label="xiala-dengji">-->
+                            <select class="form-control " style="width:100%;">
 
+                                <option value="">全部</option>
+                            </select>
                         </div>
                     </div>
                     <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
@@ -98,15 +98,14 @@
                 <div class="col-lg-4  ">
 
                     <div class="row form-inline row m-b-xs clearfix">
-                        <label class="pull-left m-l my-label" >时间:</label>
-                        <div class="col-lg-5">
+                        <label class="pull-left  n-p" >收费项目明细:</label>
+                        <div class="col-lg-3 n-p">
                             <!--<select id="u0_input" data-label="xiala-dengji">-->
-                            <select class="form-control " style="width:100%;">
+                            <input type="text" class="form-control col-lg-7" id="exampleInputName2" placeholder="Jane Doe">
 
-                                <option value="">过去1年</option>
-                                <option value="">过去2年</option>
-                            </select>
                         </div>
+                        <button type="submit" class="pull-right col-lg-2 btn btn-sm btn-info" ng-click="optionSubmit();">查询</button>
+
                     </div>
                     <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
                 </div>
@@ -117,7 +116,30 @@
         </form>
 
     </div>
-    <table ng-table="tableParams" class="text-center  table ng-table-responsive">
+    <div class="row   text-dark  " style="margin:10px 0;">
+        <!--<i icon="glpyicon glpyicon-info-sign text-info"></i>-->
+       <span class="bg-warning text-dark " style="padding:10px 0;">
+       <i class="glyphicon glyphicon-info-sign text-info text-md m-l"></i>
+       <label>提示:</label>
+       <span>诊疗费用:</span>
+       <h5 class="text-danger inline m-r">108</h5>
+       <span>检查检验费用:</span>
+       <h5 class="text-danger inline m-r">20</h5>
+       <span>药品费:</span>
+       <h5 class="text-danger inline m-r">100</h5>
+       <span>服务设施费:</span>
+       <h5 class="text-danger inline m-r">10</h5>
+        <span>其他费用:</span>
+       <h5 class="text-danger inline m-r-md">1</h5>
+       <span>共:</span>
+       <h5 class="text-danger inline m-r">500</h5>
+           </span>
+        <button type="submit" class="pull-right  m-l btn btn-sm btn-danger" ng-click="optionSubmit();">全部删除</button>
+        <button type="submit" class="pull-right  m-l btn btn-sm bg-info dker" ng-click="optionSubmit();">新增多个</button>
+        <button type="submit" class="pull-right  btn btn-sm bg-info dker" ng-click="optionSubmit();">新增单个</button>
+
+    </div>
+    <table ng-table="topTableParams" class="text-center  table ng-table-responsive">
         <tr ng-repeat="obj in $data">
             <td data-title="'序号'">
                 {{obj.id}}
@@ -166,4 +188,114 @@
 
         </tr>
     </table>
+    </div>
+</div>
+
+<div class="row m-t">
+    <div class="col-lg-7 panel panel-default " style="padding-left:0px;" >
+        <div class="panel-heading">
+            <label>医保起付费用&基本保险支付比例调整数据</label>
+            <button type="submit" class="pull-right  m-l btn btn-sm btn-info" ng-click="optionSubmit();">新增</button>
+
+        </div>
+        <div class="panel-body">
+            <table ng-table="leftTableParams" class="text-center  table ng-table-responsive">
+                <tr ng-repeat="obj in $data">
+                    <td data-title="'序号'">
+                        {{obj.id}}
+                    </td>
+                    <td data-title="'医院等级'">
+                        {{obj.category}}
+                    </td>
+                    <td data-title="'原/调整降低金额'">
+                        {{obj.item}}
+                    </td>
+                    <td data-title="'原/调整起付费用'">
+                        {{obj.originPrice}}
+                    </td>
+                    <td data-title="'原/调整支付比例'">
+                        {{obj.originPart}}%
+                    </td>
+                    <td data-title="'原/调整比例增长'">
+                        <span ng-class="{ 'plus': obj.nowPrice>= obj.originPrice,'minus': obj.nowPrice<obj.originPrice }"> {{obj.nowPrice}}</span>
+
+                    </td>
+
+                    <td data-title="'删除'">
+                        <i class="text-warning glyphicon glyphicon-trash"></i>
+                    </td>
+                    <!--<td data-title="'Name'">-->
+                    <!--{{user.idString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <div class="col-lg-5 panel panel-default  pull-right" style="padding-left:1px;">
+        <div class="panel-heading">
+            <label>大病保险支付比例调整数据</label>
+            <button type="submit" class="pull-right  m-l btn btn-sm btn-info" ng-click="optionSubmit();">新增</button>
+
+        </div>
+        <div class="panel-body">
+            <table ng-table="rightTableParams" class="text-center  table ng-table-responsive">
+                <tr ng-repeat="obj in $data">
+                    <td data-title="'序号'">
+                        {{obj.id}}
+                    </td>
+
+                    <td data-title="'原/调整保险支付比例'">
+                        {{obj.item}}
+                    </td>
+
+                    <td data-title="'原/调整自费计算比例'">
+                        <span ng-class="{ 'plus': obj.nowPrice>= obj.originPrice,'minus': obj.nowPrice<obj.originPrice }"> {{obj.nowPrice}}</span>
+
+                    </td>
+
+                    <td data-title="'删除'">
+                        <i class="text-warning glyphicon glyphicon-trash"></i>
+                    </td>
+                    <!--<td data-title="'Name'">-->
+                    <!--{{user.idString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+                    <!--<td data-title="'Age'">-->
+                    <!--{{user.hnameString}}-->
+                    <!--</td>-->
+
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
 </div>

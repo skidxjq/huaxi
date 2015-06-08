@@ -89,7 +89,7 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
                     interval: 0
                 },
                 type: 'category',
-                data: ['王伟伟', '李建平', '李丹', '王思敏', '孙承宗', '张咖喱', '王建', '庞涛', '欧阳晨', '赵光']
+                data: ['', '', '', '', '', '', '', '', '', '']
             }
         ],
         xAxis: [
@@ -112,7 +112,7 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
                         }
                     }
                 },
-                data: [20, 15.9, 14.0, 12.4, 11.7, 10.7, 9.6, 8.2, 7.7, 6.8, 6.0, 2.3]
+                data: []
             }
         ],
         onRegisterApi: function (chartApi) {
