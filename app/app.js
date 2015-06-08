@@ -5,6 +5,7 @@ var app=angular.module('myApp', [
     'ngRoute',
     'iu',
     'ngStorage',
+    'ngTable',
     'oc.lazyLoad',
     'ui.bootstrap',
     //'ui.select',
@@ -122,6 +123,13 @@ var app=angular.module('myApp', [
                 }
 
             })
+            //推演政策模拟
+            .when('/policyImitate', {
+                templateUrl: 'tpl/policy/policyImitate.html',
+                controller: 'policyImitateCtrl'
+
+
+            })
             .when('/select', {
                 templateUrl: 'tpl/form_select.html',
                 controller: 'selectCtrl'
@@ -130,6 +138,24 @@ var app=angular.module('myApp', [
 
             .otherwise({redirectTo: '/error'});
     }]);
+app.directive('formOptions',function(){
+    return {
+        restrict:'EA',
+        //controller:'AlertController',
+        controller:function($scope,$elements){},
+        template:'dddd',
+        //templateUrl:'tpl/options/allHospitalConditoins.html',
+        transclude:true,
+        replace:true,
+        scope: {
+            type: '@',
+            close: '&'
+        }
+    };
+
+
+});
+
 //angular.module('ui.bootstrap').controller('AlertDemoCtrl', function ($scope) {
 //    $scope.alerts = [
 //        { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },

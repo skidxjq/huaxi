@@ -6,22 +6,6 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
     $scope.index=1;
     $scope.echartsTitle="基金效率使用排名";
 
-    //$scope.formData={
-    //    "hospitalType" : "0101",
-    //    "diseaseType" : "A00.101",
-    //    "startTime" : "2011",
-    //    "endTime" : "2011",
-    //    "village" : "false",
-    //    "city" : "false",
-    //    "limitNum" : "10",
-    //    "w1" : "5",
-    //    "w2" : "5",
-    //    "w3" : "5",
-    //    "w4" : "5",
-    //    "w5" : "5",
-    //    "w6" : "5",
-    //    "w7" : "5"
-    //};
     $localStorage.singleDoctorqueryData==undefined?
         $scope.formData={
             "hospitalType" : "0101",
@@ -145,5 +129,10 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
 
     }
 
-
+    //生成联动菜单
+    $scope.$watch('formData.diseaseCategory',function(newValue,oldValue,scope){
+        //console.log(newValue);
+        $scope.index=newValue;
+        console.log($("#hospitalSets").find("option:selected").text());
+    });
 }]);

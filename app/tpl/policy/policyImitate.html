@@ -1,0 +1,169 @@
+<div class="row bg-info text-dark" id="itemRankPage" >
+    <form class="form-horizontal ">
+        <div class="row m-t-sm" >
+            <div class="col-lg-2-4 m-l ">
+
+                <div class="row form-inline row m-b-xs clearfix">
+                    <label class="pull-left m-l my-label" >类型:</label>
+                    <div class="col-lg-5">
+                        <!--<select id="u0_input" data-label="xiala-dengji">-->
+                        <select class="form-control " style="width:100%;">
+
+                            <option value="">住院</option>
+                            <option value="">门诊特殊疾病</option>
+                        </select>
+                    </div>
+                </div>
+                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+            </div>
+            <div class="col-lg-4 m-l ">
+
+                <div class="row form-inline row m-b-xs clearfix">
+                    <label class="pull-left m-l my-label" >险种:</label>
+                    <div class="col-lg-8" style="margin-top:-7px;">
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" value="option1"><i></i>城镇
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" value="option2"><i></i> 城镇
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" value="option2"><i></i> 大病补充
+                        </label>
+
+                    </div>
+                </div>
+                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+            </div>
+            <div class="col-lg-4  ">
+
+                <div class="row form-inline row m-b-xs clearfix">
+                    <label class="pull-left m-l my-label" >时间:</label>
+                    <div class="col-lg-5">
+                        <!--<select id="u0_input" data-label="xiala-dengji">-->
+                        <select class="form-control " style="width:100%;">
+
+                            <option value="">过去1年</option>
+                            <option value="">过去2年</option>
+                        </select>
+                    </div>
+                </div>
+                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+            </div>
+
+
+        </div>
+
+    </form>
+
+</div>
+<div class="row">
+    <div class="row">
+        <form class="form-horizontal ">
+            <div class="row m-t-sm" >
+                <div class="col-lg-2-4 m-l ">
+
+                    <div class="row form-inline row m-b-xs clearfix">
+                        <label class="pull-left m-l my-label" >收费项目大类:</label>
+                        <div class="col-lg-5">
+                            <!--<select id="u0_input" data-label="xiala-dengji">-->
+                            <select class="form-control " style="width:100%;">
+
+                                <option value="">住院</option>
+                                <option value="">门诊特殊疾病</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+                </div>
+                <div class="col-lg-4 m-l ">
+
+                    <div class="row form-inline row m-b-xs clearfix">
+                        <label class="pull-left m-l my-label" >子类名称:</label>
+                        <div class="col-lg-8" style="margin-top:-7px;">
+                            <label class="checkbox-inline i-checks">
+                                <input type="checkbox" value="option1"><i></i>
+                            </label>
+                            <label class="checkbox-inline i-checks">
+                                <input type="checkbox" value="option2"><i></i> 城镇
+                            </label>
+                            <label class="checkbox-inline i-checks">
+                                <input type="checkbox" value="option2"><i></i> 大病补充
+                            </label>
+
+                        </div>
+                    </div>
+                    <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+                </div>
+                <div class="col-lg-4  ">
+
+                    <div class="row form-inline row m-b-xs clearfix">
+                        <label class="pull-left m-l my-label" >时间:</label>
+                        <div class="col-lg-5">
+                            <!--<select id="u0_input" data-label="xiala-dengji">-->
+                            <select class="form-control " style="width:100%;">
+
+                                <option value="">过去1年</option>
+                                <option value="">过去2年</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+                </div>
+
+
+            </div>
+
+        </form>
+
+    </div>
+    <table ng-table="tableParams" class="text-center  table ng-table-responsive">
+        <tr ng-repeat="obj in $data">
+            <td data-title="'序号'">
+                {{obj.id}}
+            </td>
+            <td data-title="'收费项目大类'">
+                {{obj.category}}
+            </td>
+            <td data-title="'收费项目明细'">
+                {{obj.item}}
+            </td>
+            <td data-title="'原支付限价'">
+                {{obj.originPrice}}
+            </td>
+            <td data-title="'原支付比例'">
+                {{obj.originPart}}%
+            </td>
+            <td data-title="'调整支付限价'">
+                <span ng-class="{ 'plus': obj.nowPrice>= obj.originPrice,'minus': obj.nowPrice<obj.originPrice }"> {{obj.nowPrice}}</span>
+
+            </td>
+            <td data-title="'调整支付比例'">
+                <span ng-class="{ 'plus': obj.nowPart>= obj.originPart,'minus': obj.nowPart<obj.originPart }"> {{obj.nowPart}}%</span>
+
+            </td>
+            <td data-title="'删除'">
+                <i class="text-warning glyphicon glyphicon-trash"></i>
+            </td>
+            <!--<td data-title="'Name'">-->
+            <!--{{user.idString}}-->
+            <!--</td>-->
+            <!--<td data-title="'Age'">-->
+            <!--{{user.hnameString}}-->
+            <!--</td>-->
+            <!--<td data-title="'Age'">-->
+            <!--{{user.hnameString}}-->
+            <!--</td>-->
+            <!--<td data-title="'Age'">-->
+            <!--{{user.hnameString}}-->
+            <!--</td>-->
+            <!--<td data-title="'Age'">-->
+            <!--{{user.hnameString}}-->
+            <!--</td>-->
+            <!--<td data-title="'Age'">-->
+            <!--{{user.hnameString}}-->
+            <!--</td>-->
+
+        </tr>
+    </table>
+</div>

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome-3.0.min.css">
     <link rel="stylesheet" href="assets/css/select.css">
+    <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css">
     <!--<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>-->
 </head>
 <body  ng-controller="headerCtrl">
@@ -27,14 +28,14 @@
         <nav ui-nav="" class="aside-wrap navi" ><!-- list -->
             <ul class="nav ng-scope text-base" id="menu" >
                 <li class="active">
-            <!--<span class="pull-right text-">-->
-            <!--<i class=" fa-fw fa-angle-down text-active"></i>-->
-            <!--</span>-->
+                    <!--<span class="pull-right text-">-->
+                    <!--<i class=" fa-fw fa-angle-down text-active"></i>-->
+                    <!--</span>-->
                     <span class="font-bold  clearfix" style="display:inline-block;">
                          <!--<i class="fa fa-adjust pull-right text"></i>-->
 
                         <h4 style="text-indent:-999px;">menu
-                        <!--<i class="fa fa-adjust text"></i>-->
+                            <!--<i class="fa fa-adjust text"></i>-->
                         </h4>
 
                     </span>
@@ -311,6 +312,8 @@
                         <!--<li class="active"><a href="#">Separated link</a></li>-->
                     </ul>
                 </li>
+                <li role="presentation" id="li-policyImitate"><a href="#/policyImitate"><i class="glyphicon glyphicon-leaf"></i> 报销政策模拟推演</a></li>
+
             </ul>
         </div>
         <div ng-view></div>
@@ -323,35 +326,41 @@
 
 
 
-<!--load js in the end -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <!--load js in the end -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
-<script src="app.js"></script>
-<!--<script src="vendor/angular/angular-ui-router/angular-ui-router.js"></script>-->
+    <script src="app.js"></script>
+    <!--<script src="vendor/angular/angular-ui-router/angular-ui-router.js"></script>-->
 
-<script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
-<script src="vendor/angular/ngstorage/ngStorage.js"></script>
+    <script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
+    <script src="vendor/angular/ngstorage/ngStorage.js"></script>
 
-<script src="view2/view2.js"></script>
-<script src="assets/js/controllers/headerCtrl.js"></script>
-<script src="assets/js/services/bookService.js"></script>
-<script src="assets/js/controllers/hospitalAll/efficencyAnalyzeCtrl.js"></script>
-<script src="assets/js/controllers/hospitalAll/efficencyAnalyzeSingleCtrl.js"></script>
-<script src="assets/js/controllers/doctor/doctorSingleDiseaseAnalyzeCtrl.js"></script>
-<script src="assets/js/controllers/doctor/doctorSingleDiseaseAnalyzeResultCtrl.js"></script>
-<script src="assets/js/controllers/hospital/hospitalSingleDiseaseAnalyzeResultCtrl.js"></script>
-<script src="assets/js/controllers/hospital/hospitalSingleDiseaseAnalyzeCtrl.js"></script>
-<script src="assets/js/controllers/rankFee/rankOfFundFeeItemRankCtrl.js"></script>
-<script src="assets/js/controllers/select.js"></script>
-<script src="assets/js/plugins/echarts.min.js"></script>
-<script src="assets/js/plugins/iuChart.js"></script>
-<script src="components/version/version.js"></script>
-<script src="components/version/version-directive.js"></script>
-<script src="components/version/interpolate-filter.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="view2/view2.js"></script>
+    <script src="assets/js/controllers/headerCtrl.js"></script>
+    <script src="assets/js/services/bookService.js"></script>
+    <script src="assets/js/controllers/hospitalAll/efficencyAnalyzeCtrl.js"></script>
+    <script src="assets/js/controllers/hospitalAll/efficencyAnalyzeSingleCtrl.js"></script>
+    <script src="assets/js/controllers/doctor/doctorSingleDiseaseAnalyzeCtrl.js"></script>
+    <script src="assets/js/controllers/doctor/doctorSingleDiseaseAnalyzeResultCtrl.js"></script>
+    <script src="assets/js/controllers/hospital/hospitalSingleDiseaseAnalyzeResultCtrl.js"></script>
+    <script src="assets/js/controllers/hospital/hospitalSingleDiseaseAnalyzeCtrl.js"></script>
+    <script src="assets/js/controllers/policy/policyImitateCtrl.js"></script>
+    <script src="assets/js/controllers/rankFee/rankOfFundFeeItemRankCtrl.js"></script>
+    <script src="assets/js/controllers/select.js"></script>
+    <script src="assets/js/plugins/echarts.min.js"></script>
+    <script src="assets/js/plugins/iuChart.js"></script>
+    <script src="bower_components/ng-table/dist/ng-table.js"></script>
+
+
+
+    <script src="assets/js/directives/optionDirective.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </body>
 </html>
