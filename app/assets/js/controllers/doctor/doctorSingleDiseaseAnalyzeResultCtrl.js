@@ -90,7 +90,12 @@ app.controller('doctorSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$local
     $scope.drawLeftEcharts=function(){
 
         //已经测试通过
-        $data={"doctornameString":$("#doctorSets").find("option:selected").text()};
+        //$data={"doctornameString":$("#doctorSets").find("option:selected").text()};
+        $data={
+            "doctornameString":$("#doctorSets").find("option:selected").text()!=""?
+                $("#doctorSets").find("option:selected").text():
+                $scope.queryData.doctor
+        };
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",

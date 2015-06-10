@@ -159,8 +159,8 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
     }
     $scope.config={};
     //$scope.config.baseUrl="http://10.20.1.12:8070";
-    //$scope.config.baseUrl="http://192.168.1.30:8070";
-    $scope.config.baseUrl="http://localhost/skidxjq/php";
+    $scope.config.baseUrl="http://192.168.1.30:8080";
+    //$scope.config.baseUrl="http://localhost/skidxjq/php";
     $scope.config.echarts={};
     $scope.config.echarts.legend=[
         ["就诊次数","次均费用","并发症用户占比","次均住院时长","住院时长标准差","再次入院间隔/费用","病情好转指标"]

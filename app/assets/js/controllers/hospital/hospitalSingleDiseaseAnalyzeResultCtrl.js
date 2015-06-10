@@ -89,7 +89,11 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
     $scope.drawLeftEcharts=function(){
 
         //已经测试通过
-        $data={"hnameString":$("#hospitalSets").find("option:selected").text()};
+        $data={
+            "hnameString":$("#hospitalSets").find("option:selected").text()!=""?
+                $("#hospitalSets").find("option:selected").text():
+                $scope.queryData.hospital
+        };
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
@@ -101,9 +105,11 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
             success:function(response){
                 //console.log(response);
                 var $jsonData=eval(response);
-                console.log("success");
+                console.log("########");
+                console.log($jsonData);
                 //$scope.drawEcharts($jsonData);
                 $scope.config.echarts.drawBar( $scope.leftechartsOption,$scope.leftecharts,$jsonData,"vertical");
+                $scope.$apply();
                 //$scope.leftechartsOption.series[0].data=$jsonData["series"][0];
                 //console.log($scope.leftechartsOption);
                 //$scope.leftecharts.setOption($scope.leftechartsOption);
@@ -129,6 +135,7 @@ app.controller('hospitalSingleDiseaseAnalyzeResultCtrl', ['$scope','$http','$loc
             //"weight":$scope.formData.repeat
         };
         console.log($data);
+        console.log("draw right echarts");
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
