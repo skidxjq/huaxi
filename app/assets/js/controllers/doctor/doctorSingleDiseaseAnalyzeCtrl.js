@@ -22,8 +22,18 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
             "w4" : "5",
             "w5" : "5",
             "w6" : "5",
-            "w7" : "5"
+            "w7" : "5",
+            "checked":{
+                "w1":true,
+                "w2":true,
+                "w3":true,
+                "w4":true,
+                "w5":true,
+                "w6":true,
+                "w7":true
+            }
         }:
+
         $scope.formData=$localStorage.singleDoctorqueryData
     ;
     $scope.optionSubmit=function(){
@@ -31,7 +41,13 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
         $scope.formData.diseaseName=$("#diseaseName").find("option:selected").text();
         //更改title
         $scope.echartsTitle="四川"+$scope.formDataMap.hospitalType[$scope.formData.hospitalType]+$scope.formData.diseaseName+"基金效率使用排名";
-
+        $scope.formData.w1=$scope.formData.w1*$scope.formData.checked.w1;
+        $scope.formData.w2=$scope.formData.w2*$scope.formData.checked.w2;
+        $scope.formData.w3=$scope.formData.w3*$scope.formData.checked.w3;
+        $scope.formData.w4=$scope.formData.w4*$scope.formData.checked.w4;
+        $scope.formData.w5=$scope.formData.w5*$scope.formData.checked.w5;
+        $scope.formData.w6=$scope.formData.w6*$scope.formData.checked.w6;
+        $scope.formData.w7=$scope.formData.w7*$scope.formData.checked.w7;
         console.log($scope.formData);
         $localStorage.singleDoctorformData=$scope.formData;
         console.log($localStorage);
@@ -46,10 +62,12 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
             jsonp:"callback",
             //jsonpCallback:$scope.drawEcharts,
             success:function(response){
+                console.log(response);
                 $localStorage.singleDoctorqueryData=$scope.formData;
 
                 var $jsonData=eval(response);
-                $scope.drawEcharts($jsonData);
+                $scope.config.echarts.drawBar($scope.echartsOption,$scope.echarts,$jsonData,"vertical");
+                //$scope.drawEcharts($jsonData);
                 $scope.closeModal();
             }
         });
@@ -58,13 +76,6 @@ app.controller('doctorSingleDiseaseAnalyzeCtrl', ['$scope','$http','$localStorag
 
 
     //对响应的数据进行绘制
-    $scope.drawEcharts=function($jsonData){
-        console.log("into drawecharts");
-        $scope.echartsOption.yAxis[0].data=$jsonData["axis"].reverse();
-        $scope.echartsOption.series[0].data=$jsonData["series"][0].reverse();
-        window.onresize= $scope.echarts.resize;
-        $scope.echarts.setOption($scope.echartsOption,true);
-    };
 
     $scope.echartsOption = {
         version: 1,

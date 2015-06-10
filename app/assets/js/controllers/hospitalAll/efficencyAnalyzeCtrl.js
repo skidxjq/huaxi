@@ -5,9 +5,12 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage','$modal
 
     console.log("#####start");
     console.log($localStorage.allHospitalqueryData);
-    $localStorage.allHospitalqueryData==undefined?
+    console.log(typeof $localStorage.allHospitalqueryData);
+    typeof $localStorage.allHospitalqueryData !== 'object'?
         $scope.formData={
             "hospitalType" : "0101",
+            "diseaseCategory":"1",
+            "diseaseType" : "A00.101",
             "startTime" : "2011",
             "endTime" : "2011",
             "village" : "false",
@@ -19,7 +22,16 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage','$modal
             "w4" : "5",
             "w5" : "5",
             "w6" : "5",
-            "w7" : "5"
+            "w7" : "5",
+            "checked":{
+                "w1":true,
+                "w2":true,
+                "w3":true,
+                "w4":true,
+                "w5":true,
+                "w6":true,
+                "w7":true
+            }
         }:
         $scope.formData=$localStorage.allHospitalqueryData
     ;
@@ -34,7 +46,14 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage','$modal
         console.log($scope.formData);
         $localStorage.singleHospitalformData=$scope.formData;
         console.log($localStorage);
-
+        //整齐化1
+        $scope.formData.w1=$scope.formData.w1*$scope.formData.checked.w1;
+        $scope.formData.w2=$scope.formData.w2*$scope.formData.checked.w2;
+        $scope.formData.w3=$scope.formData.w3*$scope.formData.checked.w3;
+        $scope.formData.w4=$scope.formData.w4*$scope.formData.checked.w4;
+        $scope.formData.w5=$scope.formData.w5*$scope.formData.checked.w5;
+        $scope.formData.w6=$scope.formData.w6*$scope.formData.checked.w6;
+        $scope.formData.w7=$scope.formData.w7*$scope.formData.checked.w7;
         //全病种画图
         $.ajax({
             type:"GET",
@@ -48,7 +67,7 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage','$modal
 
                 var $jsonData=eval(response);
                 $localStorage.allHospitalqueryData=$scope.formData;
-
+                console.log($localStorage);
                 console.log("$######");
                 console.log($localStorage.allHospitalqueryData);
                 console.log("$######");

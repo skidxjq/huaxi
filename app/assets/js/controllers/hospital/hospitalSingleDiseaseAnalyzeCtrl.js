@@ -22,7 +22,16 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
             "w4" : "5",
             "w5" : "5",
             "w6" : "5",
-            "w7" : "5"
+            "w7" : "5",
+            "checked":{
+                "w1":true,
+                "w2":true,
+                "w3":true,
+                "w4":true,
+                "w5":true,
+                "w6":true,
+                "w7":true
+            }
         }:
         $scope.formData=$localStorage.singleHospitalqueryData
     ;
@@ -30,7 +39,9 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
     console.log($scope.formData);
 
 
-    console.log($scope.formData);
+    $scope.print=function() {
+        console.log($scope.formData);
+    }
     //生成联动菜单
     $scope.$watch('formData.diseaseCategory',function(newValue,oldValue,scope){
         //console.log(newValue);
@@ -120,9 +131,18 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
         //更改title
         $scope.echartsTitle="四川"+$scope.formDataMap.hospitalType[$scope.formData.hospitalType]+$scope.formData.diseaseName+"基金效率使用排名";
 
+        $scope.formData.w1=$scope.formData.w1*$scope.formData.checked.w1;
+        $scope.formData.w2=$scope.formData.w2*$scope.formData.checked.w2;
+        $scope.formData.w3=$scope.formData.w3*$scope.formData.checked.w3;
+        $scope.formData.w4=$scope.formData.w4*$scope.formData.checked.w4;
+        $scope.formData.w5=$scope.formData.w5*$scope.formData.checked.w5;
+        $scope.formData.w6=$scope.formData.w6*$scope.formData.checked.w6;
+        $scope.formData.w7=$scope.formData.w7*$scope.formData.checked.w7;
         console.log($scope.formData);
         $localStorage.singleHospitalformData=$scope.formData;
         console.log($localStorage);
+        //整齐化1
+
 
         //已经测试通过
         $.ajax({
@@ -134,14 +154,16 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
             jsonp:"callback",
             //jsonpCallback:$scope.drawEcharts,
             success:function(response){
+                console.log(response);
 
                 var $jsonData=eval(response);
                 $localStorage.singleHospitalqueryData=$scope.formData;
                 console.log("$######");
                 console.log($localStorage.singleHospitalqueryData);
                 console.log("$######");
+                $scope.config.echarts.drawBar($scope.echartsOption,$scope.echarts,$jsonData,"vertical");
 
-                $scope.drawEcharts($jsonData);
+                //$scope.drawEcharts($jsonData);
                 $scope.closeModal();
             }
         });

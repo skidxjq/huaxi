@@ -1,0 +1,136 @@
+<div class="row bg-info text-dark" id="itemRankPage" >
+    <form class="form-horizontal form-group">
+        <div class="row ">
+            <div class="col-lg-2-4 m-l m-t">
+
+                <div class="row form-inline row m-b-xs clearfix">
+                    <label class="pull-left m-l my-label" >类型:</label>
+                    <div class="col-lg-5">
+                        <!--<select id="u0_input" data-label="xiala-dengji">-->
+                        <select class="form-control " style="width:100%;">
+
+                            <option value="">住院</option>
+                            <option value="">门诊特殊疾病</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-inline row m-b-xs clearfix">
+                    <label class="pull-left m-l my-label" >指标:</label>
+                    <div class="col-lg-8">
+                        <!--<select id="u0_input" data-label="xiala-dengji">-->
+                        <select class="form-control " style="width:100%;">
+
+                            <option value="">医保支付总额</option>
+                            <option value="">次均费用</option>
+                        </select>
+                    </div>
+                </div>
+                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+            </div>
+            <div class="col-lg-5 m-l m-t">
+
+                <div class="row form-inline row m-b-xs clearfix">
+                    <label class="pull-left m-l my-label" >险种:</label>
+                    <div class="col-lg-8" style="margin-top:-7px;">
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" value="option1"><i></i>城镇
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" value="option2"><i></i> 城乡
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" value="option2"><i></i> 大病补充
+                        </label>
+
+                    </div>
+                </div>
+                <div class="row m-l-md">
+                    <button  class="btn btn-sm btn-info">提交</button>
+
+                </div>
+                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+            </div>
+            <div class="col-lg-4  m-t" style="margin-left:-10px;">
+
+                <div class="row form-inline row m-b-xs clearfix">
+                    <label class="pull-left m-l my-label" >时间:</label>
+
+                    <div class="col-lg-4" style="margin-left:0">
+                        <p class="input-group form_datetime">
+                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt_min" is-open="minDateOpened" min-date="" max-date="dt_max" datepicker-options="dateOptions" ng-required="true" close-text="Close"  />
+
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="minDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+
+                    </span>
+                        </p>
+                    </div>
+                    <label class="pull-left m-l my-label" >至:</label>
+
+                    <div class="col-lg-4" style="margin-left:0">
+                        <p class="input-group form_datetime">
+                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt_max" is-open="maxDateOpened" min-date="dt_min" max-date="dt" datepicker-options="dateOptions"  ng-required="true" close-text="Close"  />
+
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="maxDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+
+                    </span>
+                        </p>
+                    </div>
+                </div>
+                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
+            </div>
+        </div>
+        <div class="row">
+            <label class=" m-l-lg " >当前条件：</label>
+            <span class=" label bg-primary  m-r ng-binding">住院</span>
+            <span class=" label bg-primary  m-r ng-binding">城镇</span>
+            <span class=" label bg-primary  m-r ng-binding">2011-05-04至2015-05-04</span>
+        </div>
+
+    </form>
+
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <h4>医保费用同期对比分析</h4>
+        <div data-iu-chart="overviewEchartsOption" style="height:450px;">
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>医保费用不同等级医院构成分析</h4>
+
+                <div class="panel-body" data-iu-chart="levelPieEchartsOption" style="height:250px;">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h4>医保费用不同等级医院增长率分析</h4>
+
+                <div class="" data-iu-chart="levelBarEchartsOption" style="height:250px;">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>医保费用不同区域医院构成分析</h4>
+
+                <div class="panel-body" data-iu-chart="districtPieEchartsOption" style="height:250px;">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h4>医保费用不同地区医院增长率分析</h4>
+
+                <div class="" data-iu-chart="districtBarEchartsOption" style="height:250px;">
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

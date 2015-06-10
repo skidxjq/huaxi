@@ -59,9 +59,9 @@ var app=angular.module('myApp', [
 //})
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
-            .when('/error', {
-                templateUrl: 'tpl/404.html'
-                //controller: 'View1Ctrl'
+            .when('/index', {
+                templateUrl: 'tpl/overview/index.html',
+                controller: 'indexCtrl'
             })
             .when('/view2', {
                 templateUrl: 'view2/view2.html',
@@ -130,13 +130,30 @@ var app=angular.module('myApp', [
 
 
             })
+            .when('/doctorFee', {
+                templateUrl: 'tpl/overview/rank/doctorFee.html',
+                controller: 'doctorFeeCtrl'
+            })
+            .when('/diseaseFee', {
+                templateUrl: 'tpl/overview/rank/diseaseFee.html',
+                controller: 'diseaseFeeCtrl'
+            })
+            .when('/hospitalFee', {
+                templateUrl: 'tpl/overview/rank/hospitalFee.html',
+                controller: 'hospitalFeeCtrl'
+            })
+            .when('/itemFee', {
+                templateUrl: 'tpl/overview/rank/itemFee.html',
+                controller: 'itemFeeCtrl'
+            })
+
             .when('/select', {
                 templateUrl: 'tpl/form_select.html',
                 controller: 'selectCtrl'
 
             })
 
-            .otherwise({redirectTo: '/error'});
+            .otherwise({redirectTo: '/index'});
     }]);
 app.directive('formOptions',function(){
     return {

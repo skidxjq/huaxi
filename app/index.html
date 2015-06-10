@@ -295,8 +295,26 @@
         </div>
         <div class="row" id="nav">
             <ul class="nav nav-pills">
-                <li role="presentation" id="li-overview"><a href="#"><i class="glyphicon glyphicon-home"></i> 基金使用概览</a></li>
-                <li role="presentation" id="li-efficencyAnalyze"><a href="#/efficencyAnalyze"><i class="glyphicon glyphicon-briefcase"></i> 医院效率分析</a></li>
+                <li role="presentation" class="dropdown" >
+                    <a  class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
+                        <i class="glyphicon glyphicon-home"></i>
+                        基金使用概览<span class="caret"></span></a>
+                    <ul class="dropdown-menu nav nav-pills" role="menu">
+                        <li id="li-overview-index"><a href="#/overview">医保基金使用概览</a></li>
+                        <li id="li-overview-diseaseFee"><a href="#/diseaseFee">病种费用排名</a></li>
+                        <li id="li-overview-hospitalFee"><a href="#/hospitalFee">医院费用排名</a></li>
+                        <li id="li-overview-doctorFee"><a href="#/doctorFee">医生费用排名</a></li>
+                        <li id="li-rankOfFundFeeItemRank"><a href="#/rankOfFundFeeItemRank">收费项目费用排名</a></li>
+                        <li id="li-overview-itemFee"><a href="#/itemFee">收费项目分析</a></li>
+                    </ul>
+
+
+                </li>
+
+                <li role="presentation" id="li-efficencyAnalyze"><a href="#/efficencyAnalyze">
+                    <i class="glyphicon glyphicon-briefcase"></i> 医院效率分析</a></li>
+
+
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
                         <i class="glyphicon glyphicon-book"></i>
@@ -316,7 +334,7 @@
 
             </ul>
         </div>
-        <div ng-view></div>
+        <div ng-view class=".view-slide-in"></div>
 
         <!--<div data-ng-include=" 'tpl/blocks/footer.html' ">-->
 
@@ -350,6 +368,11 @@
     <script src="assets/js/controllers/hospital/hospitalSingleDiseaseAnalyzeResultCtrl.js"></script>
     <script src="assets/js/controllers/hospital/hospitalSingleDiseaseAnalyzeCtrl.js"></script>
     <script src="assets/js/controllers/policy/policyImitateCtrl.js"></script>
+    <script src="assets/js/controllers/overview/indexCtrl.js"></script>
+    <script src="assets/js/controllers/overview/rank/doctorFeeCtrl.js"></script>
+    <script src="assets/js/controllers/overview/rank/hospitalFeeCtrl.js"></script>
+    <script src="assets/js/controllers/overview/rank/diseaseFeeCtrl.js"></script>
+    <script src="assets/js/controllers/overview/rank/itemFeeCtrl.js"></script>
     <script src="assets/js/controllers/rankFee/rankOfFundFeeItemRankCtrl.js"></script>
     <script src="assets/js/controllers/select.js"></script>
     <script src="assets/js/plugins/echarts.min.js"></script>

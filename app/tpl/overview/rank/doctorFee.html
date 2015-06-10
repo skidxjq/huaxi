@@ -1,5 +1,3 @@
-<!--收费项目费用排名 -->
-<!--<alert  type="info" close="closeAlert($index)">eee</alert>-->
 <div class="row bg-info text-dark" id="itemRankPage" >
     <form class="form-horizontal form-group">
         <div class="row ">
@@ -38,7 +36,7 @@
                             <input type="checkbox" value="option1"><i></i>城镇
                         </label>
                         <label class="checkbox-inline i-checks">
-                            <input type="checkbox" value="option2"><i></i> 城镇
+                            <input type="checkbox" value="option2"><i></i> 城乡
                         </label>
                         <label class="checkbox-inline i-checks">
                             <input type="checkbox" value="option2"><i></i> 大病补充
@@ -104,7 +102,7 @@
                 </div>
                 <div class="row form-inline row m-b-xs clearfix">
                     <label class="pull-left m-l my-label" >医生:</label>
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
                         <!--<select id="u0_input" data-label="xiala-dengji">-->
                         <select class="form-control " style="width:100%;">
 
@@ -113,12 +111,20 @@
                             <option value="">李四</option>
                         </select>
                     </div>
+                    <div class="col-lg-2  ">
+                        <button  class="btn btn-sm btn-info">提交</button>
+                    </div>
                 </div>
                 <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">-->
             </div>
         </div>
         <div class="row">
-            <label class="col-lg-2">当前条件：</label>
+            <label class=" m-l-lg " >当前条件：</label>
+            <span class=" label bg-primary  m-r ng-binding">住院</span>
+            <span class=" label bg-primary  m-r ng-binding">城镇</span>
+            <span class=" label bg-primary  m-r ng-binding">2011-05-04至2015-05-04</span>
+            <span class=" label bg-primary  m-r ng-binding">就诊次数</span>
+            <span class=" label bg-primary  m-r ng-binding">四川大学华西医院</span>
 
 
         </div>
@@ -126,58 +132,56 @@
     </form>
 
 </div>
-<div class="row m-t ">
-    <div class="row  m-l">
-        <div class="col-md-4  center" >
-            <h4 class="">医保费用构成分析分析（大类）</h4>
-                    <!--<div style="height:250px;" data-iu-chart="hugeFeeAnalyzePieOption">-->
-
-                    <!--</div>-->
-            <div data-iu-chart="hugeFeeAnalyzePieOption"  style="height:300px;"></div>
-
-
+<div class="row m-t">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            四川大学华西医院医生就诊次数排名报表
         </div>
-        <div class="col-md-8 " >
-            <h4 class="">医保费用构成分析（大类）</h4>
-
-            <select class="form-control  pull-left m-l-lg " style="width:30%;">
-                <option value="医保支付费用">医保支付费用</option>
-                <option value="次均费用">次均费用</option>
-                <option value="次均费用增幅">次均费用增幅</option>
-                <option value="医保支付费用增幅">医保支付费用增幅</option>
-            </select>
-
-            <!--<span class="handcursor   label bg-primary inline m-r-lg pull-right" style="font-size:15px;">前20名</span>-->
-            <!--<span class="handcursor   label bg-primary inline m-r pull-right" style="font-size:15px;">前10名</span>-->
-            <!--<span class="handcursor   label bg-primary inline m-r pull-right" style="font-size:15px;">前5名</span>-->
-            <div data-iu-chart="hugeFeeAnalyzeBarOption"  style="height:280px;"></div>
-
+        <div class="panel-body">
+            <span class=" handcursor label bg-primary  m-r ng-binding">前10名</span>
+            <span class="handcursor label bg-primary  m-r ng-binding">前20名</span>
+            <span class=" handcursor label bg-primary  m-r ng-binding">前30名</span>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>医生</th>
+                    <th>所属医院</th>
+                    <th>所属科室</th>
+                    <th>就诊次数</th>
+                    <th>同比增长率</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="obj in config.mock.doctorTable">
+                    <td>{{obj.doctor}}</td>
+                    <td>{{obj.hospital}}</td>
+                    <td>{{obj.department}}</td>
+                    <td>{{obj.count}}</td>
+                    <td>{{obj.increase}}%</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-
-    </div>
-    <div class="row m-r">
-        <div class="col-md-4 " >
-            <h4 class="">医保费用构成分析分析（小类）</h4>
-            <div data-iu-chart="hugeFeeAnalyzePieOption"  style="height:300px;"></div>
-
-
-        </div>
-        <div class="col-md-8 " >
-            <h4 class="">医保费用构成分析（小类）</h4>
-
-            <select class="form-control  pull-left m-l-lg " style="width:30%;">
-                <option value="医保支付费用">医保支付费用</option>
-                <option value="次均费用">次均费用</option>
-                <option value="次均费用增幅">次均费用增幅</option>
-                <option value="医保支付费用增幅">医保支付费用增幅</option>
-            </select>
-
-            <!--<span class="handcursor   label bg-primary inline m-r-lg pull-right" style="font-size:15px;">前20名</span>-->
-            <!--<span class="handcursor   label bg-primary inline m-r pull-right" style="font-size:15px;">前10名</span>-->
-            <!--<span class="handcursor   label bg-primary inline m-r pull-right" style="font-size:15px;">前5名</span>-->
-            <div data-iu-chart="hugeFeeAnalyzeBarOption"  style="height:280px;"></div>
-
-        </div>
-
     </div>
 </div>
+<!--<div class="row">-->
+    <!--<div class="col-lg-6" style="padding-left:0px;">-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">-->
+                <!--四川大学华西医院医生就诊次数排名-->
+            <!--</div>-->
+            <!--<div class="panel-body" data-iu-chart="countEchartsOption" style="height:450px;">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-lg-6">-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">-->
+                <!--四川大学华西医院医生就诊次数增幅排名-->
+            <!--</div>-->
+            <!--<div class="panel-body" data-iu-chart="rateEchartsOption" style="height:450px;">-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

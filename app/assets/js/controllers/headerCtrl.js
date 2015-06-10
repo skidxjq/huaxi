@@ -210,163 +210,340 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
 
     //传入参数 option echarts、json数据，绘图方向
     $scope.config.echarts.drawBar=function(options,echarts,jsonData,direction){
+        if(jsonData["axis"].length==0){
+            echarts.showLoading({text:"暂无数据",textStyle:{fontsize:20}});
+            return false;
+        };
         direction=="vertical"?
             options.yAxis[0].data=jsonData["axis"]:
             options.xAxis[0].data=jsonData["axis"];
         options.series[0].data=jsonData["series"][0];
         //console.log(options);
         echarts.setOption(options);
+        echarts.hideLoading();
         console.log(options);
         options.version++;
     };
     //画scatter
     $scope.config.echarts.drawScatter=function(options,echarts,jsonData){
-        console.log("@@@@@@@@@");
         console.log(jsonData);
         options.series[0].data=jsonData["series"][0]["data"];
         echarts.setOption(options);
     };
-
+    $scope.config.mock={
+        "diseaseSets":["高血压","冠心病","感冒","颈椎病","肺部感染","心脏病","腰间盘突出","癌症","脑梗塞","脑血栓","肿瘤","支气管炎","哮喘"],
+        "hospitalSets":["三甲","三乙","二甲","二乙","二甲以下下浮20%","二乙以下下浮20%"],
+        "hospitalDetailsSets":["第三人民医院","华西医院","成都上锦南府医院","省中西医结合医院","成都中医药大学附属医院","四川省肿瘤医院","四川省人民医院","四川华西第四医院","成都第二人民医院","成都第三人民医院"],
+        "hospitalLegendsSets":[
+            {
+                name:'三甲',
+                icon:'bar'
+            },{
+                name:'三乙',
+                icon:'bar'
+            },{
+                name:'二甲',
+                icon:'bar'
+            },{
+                name:'二乙',
+                icon:'bar'
+            },{
+                name:'二甲以下下浮20%',
+                icon:'bar'
+            },{
+                name:'二乙以下下浮20%',
+                icon:'bar'
+            }
+        ],
+        "districtSets":["成华区","武侯区","锦江区","高新区","青白江","新都","青羊区","高新西区","温江区"],
+        "districtEchartsSets":[
+            {
+                name:'成华区',
+                icon:'bar'
+            },{
+                name:'武侯区',
+                icon:'bar'
+            },{
+                name:'锦江区',
+                icon:'bar'
+            },{
+                name:'高新区',
+                icon:'bar'
+            },{
+                name:'青白江',
+                icon:'bar'
+            },{
+                name:'新都',
+                icon:'bar'
+            },{
+                name:'青羊区',
+                icon:'bar'
+            },{
+                name:'高新西区',
+                icon:'bar'
+            },{
+                name:'温江区',
+                icon:'bar'
+            }
+        ],
+        "doctors":["罗建平","李四","王五","顺溜","王娇","学习","雷锋","棒棒","刘德华","甘露"],
+        "data":[100,200,30,50,60,10,34,23,55,22],
+        "doctorTable":[
+            {"doctor":"罗建平","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"李四","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"王五","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"顺溜","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"王娇","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"学习","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"雷锋","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"棒棒","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"刘德华","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"甘露","hospital":"华西医院","department":"外科","count":1000,"increase":2.4}
+        ],
+        "getRandomData":function(num,max,points){
+            var arr=[];
+            for(var i=0;i<num;i++){
+                arr.push((Math.random()*max).toFixed(2));
+            }
+            return arr;
+        },
+        "getRandomPieData":function(num,max,legends){
+            var arr=[];
+            for(var i=0;i<num;i++){
+                arr.push({"name":legends[i],"value":(Math.random()*200).toFixed(0)})
+            };
+            return arr;
+        }
+    };
     //
     $scope.config.echarts.templateOptions={
-    "smallBar":
-    {
-        version: 1,
+        "doctorBar":{
+            version: 1,
 
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['RANK'],
-            show:false,
-            y: 'bottom'
-        },
-        toolbox: {
-            show: false
-        },
-        grid: {
-            x: 30,
-            y: 10,
-            x2: 30,
-            y2: 55
-        },
-        padding: 0,
-        calculable: true,
-        xAxis: [
-            {
-                //axisLabel: {
-                //    interval: 0
-                //},
-                axisLabel : {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['RANK'],
+                show:false,
+                y: 'bottom'
+            },
+            toolbox: {
+                show: false
+            },
+            grid: {
+                x: 60,
+                y: 10,
+                x2: 30,
+                y2: 55
+            },
+            padding: 0,
+            calculable: true,
+            yAxis: [
+                {
+                    //axisLabel: {
+                    //    interval: 0
+                    //},
+                    axisLabel : {
 
-                    interval: 0,
-                    textStyle : {
-                        fontSize : 10
-                    },
-                    clickable:true,
+                        interval: 0,
+                        textStyle : {
+                            fontSize : 10
+                        },
+                        clickable:true,
 
-                    formatter: function(value){
-                        var res='';
-                        for(var i=0, l=value.length;i<l;i++){
-                            res+=value[i];
-                            if((i<(l-1)) && ((i+1)%4==0)){
-                                res=res+"\n";//就是这里！！！
+                        formatter: function(value){
+                            var res='';
+                            for(var i=0, l=value.length;i<l;i++){
+                                res+=value[i];
+                                if((i<(l-1)) && ((i+1)%4==0)){
+                                    res=res+"\n";//就是这里！！！
 
-                                //每次都是把<br/>当成实际的字符串去处理而没起到换行的作用
+                                    //每次都是把<br/>当成实际的字符串去处理而没起到换行的作用
+                                }
                             }
-                        }
-                        return res;
+                            return res;
+                        },
+                        margin:20
                     },
-                    margin:20
-                },
-                type: 'category',
-                data: ["","","","",""]
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                splitArea: {show: true}
-            }
-        ],
-        series: [
+                    type: 'category',
+                    data: $scope.config.mock.doctors
+                }
+            ],
+            xAxis: [
+                {
+                    type: 'value',
+                    splitArea: {show: true}
+                }
+            ],
+            series: [
 
-            {
-                name: 'RANK',
-                type: 'bar',
-                barWidth:30,
-                itemStyle:{
-                    normal:{
-                        color:function(params){
-                            //return $scope.colorSets[params.dataIndex];
-                            return $scope.colorSets[params.dataIndex];
+                {
+                    name: 'RANK',
+                    type: 'bar',
+                    //barWidth:30,
+                    itemStyle:{
+                        normal:{
+                            color:function(params){
+                                //return $scope.colorSets[params.dataIndex];
+                                return $scope.colorSets[params.dataIndex];
+                            }
+                            //,
+                            //label:{
+                            //    show:fa,
+                            //    position:"right"
+                            //}
                         }
-                        //,
-                        //label:{
-                        //    show:fa,
-                        //    position:"right"
-                        //}
-                    }
-                },
-                data: [18, 11, 9,7,3]
-            }
-        ]
-        //,
-        //onRegisterApi: function (chartApi) {
-        //    efficencyRank_RightLeft_OptionApi = chartApi;
-        //    efficencyRank_RightLeft_OptionApi.registerBarClicked($scope,$scope.clickEvent);
-        //
-        //    //chartPro
-        //}
-    },
-    "scatter":{
-        version: 1,
-        tooltip: {
-            trigger: 'axis'
+                    },
+                    data:$scope.config.mock.data
+                }
+            ]
+            //,
+            //onRegisterApi: function (chartApi) {
+            //    efficencyRank_RightLeft_OptionApi = chartApi;
+            //    efficencyRank_RightLeft_OptionApi.registerBarClicked($scope,$scope.clickEvent);
+            //
+            //    //chartPro
+            //}
         },
-        legend: {
-            data: ['RANK'],
-            show:false,
-            y: 'bottom'
-        },
-        toolbox: {
-            show: false
-        },
-        grid: {
-            x: 30,
-            y: 10,
-            x2: 30,
-            y2: 55
-        },
-        padding: 0,
-        calculable: true,
+        "smallBar":
+        {
+            version: 1,
 
-        xAxis: [
-            {
-                type: 'value',
-                scale:true,
-                splitArea: {show: true}
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                scale:true,
-                splitArea: {show: true}
-            }
-        ],
-        series: [
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['RANK'],
+                show:false,
+                y: 'bottom'
+            },
+            toolbox: {
+                show: false
+            },
+            grid: {
+                x: 30,
+                y: 10,
+                x2: 30,
+                y2: 55
+            },
+            padding: 0,
+            calculable: true,
+            xAxis: [
+                {
+                    //axisLabel: {
+                    //    interval: 0
+                    //},
+                    axisLabel : {
 
-            {
-                name: 'RANK',
-                type: 'scatter',
+                        interval: 0,
+                        textStyle : {
+                            fontSize : 10
+                        },
+                        clickable:true,
 
-                data: []
-            }
-        ]}
+                        formatter: function(value){
+                            var res='';
+                            for(var i=0, l=value.length;i<l;i++){
+                                res+=value[i];
+                                if((i<(l-1)) && ((i+1)%4==0)){
+                                    res=res+"\n";//就是这里！！！
+
+                                    //每次都是把<br/>当成实际的字符串去处理而没起到换行的作用
+                                }
+                            }
+                            return res;
+                        },
+                        margin:20
+                    },
+                    type: 'category',
+                    data: ["","","","",""]
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    splitArea: {show: true}
+                }
+            ],
+            series: [
+
+                {
+                    name: 'RANK',
+                    type: 'bar',
+                    barWidth:30,
+                    itemStyle:{
+                        normal:{
+                            color:function(params){
+                                //return $scope.colorSets[params.dataIndex];
+                                return $scope.colorSets[params.dataIndex];
+                            }
+                            //,
+                            //label:{
+                            //    show:fa,
+                            //    position:"right"
+                            //}
+                        }
+                    },
+                    data: [18, 11, 9,7,3]
+                }
+            ]
+            //,
+            //onRegisterApi: function (chartApi) {
+            //    efficencyRank_RightLeft_OptionApi = chartApi;
+            //    efficencyRank_RightLeft_OptionApi.registerBarClicked($scope,$scope.clickEvent);
+            //
+            //    //chartPro
+            //}
+        },
+        "scatter":{
+            version: 1,
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['RANK'],
+                show:false,
+                y: 'bottom'
+            },
+            toolbox: {
+                show: false
+            },
+            grid: {
+                x: 30,
+                y: 10,
+                x2: 30,
+                y2: 55
+            },
+            padding: 0,
+            calculable: true,
+
+            xAxis: [
+                {
+                    type: 'value',
+                    scale:true,
+                    splitArea: {show: true}
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    scale:true,
+                    splitArea: {show: true}
+                }
+            ],
+            series: [
+
+                {
+                    name: 'RANK',
+                    type: 'scatter',
+
+                    data: []
+                }
+            ]}
     };
 
-        //颜色集合 echarts专用
+    //颜色集合 echarts专用
     $scope.$i=0;
     $scope.colorSets=["#EE9A49","red","pink","#7266ba","#fad733","green","#23b7e5","#27c24c","#dff0d8","#E0FFFF","#C0FF3E","#8B2500"];
     //医院类型的集合
@@ -462,3 +639,20 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
 }]);
 app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function($scope, $modalInstance) {
 }]);
+app.animation('.view-slide-in', function () {
+    return {
+        enter: function(element, done) {
+            element.css({
+                opacity: 0.5,
+                position: "relative",
+                top: "10px",
+                left: "20px"
+            })
+                .animate({
+                    top: 0,
+                    left: 0,
+                    opacity: 1
+                }, 1000, done);
+        }
+    };
+});
