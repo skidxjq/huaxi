@@ -115,8 +115,14 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
     $scope.config.echarts.extend($scope.rightRightEchartsOption,$scope.config.echarts.templateOptions.smallBar);
 
     $scope.drawRightRightEcharts=function(){
-        $data={"hnameString":"华西医院","idString":818993,"top10":5,"Descend":false};
-
+        $data={
+            "hnameString":$("#hospitalSets").find("option:selected").text()!=""?
+                $("#hospitalSets").find("option:selected").text():
+                $scope.queryData.hospital
+            ,
+            "idString":$("#hospitalSets").val()!=""?
+                $("#hospitalSets").val():
+                $scope.queryData.hospitalId,"top10":5,"Descend":true};
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
@@ -137,7 +143,14 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
 
 
     $scope.drawRightLeftEcharts=function(){
-        $data={"hnameString":"华西医院","idString":818993,"top10":5,"Descend":false};
+        $data={
+            "hnameString":$("#hospitalSets").find("option:selected").text()!=""?
+                $("#hospitalSets").find("option:selected").text():
+                $scope.queryData.hospital
+            ,
+            "idString":$("#hospitalSets").val()!=""?
+                $("#hospitalSets").val():
+                $scope.queryData.hospitalId,"top10":5,"Descend":false};
 
         $.ajax({
             type:"GET",
@@ -159,7 +172,15 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
     };
 
     $scope.drawScatterEcharts=function(){
-        $data={"hnameString":"华西医院","idString":818993,"top10":5,"Descend":false};
+        $data={
+            "hnameString":$("#hospitalSets").find("option:selected").text()!=""?
+              $("#hospitalSets").find("option:selected").text():
+               $scope.queryData.hospital
+            ,
+            "idString":$("#hospitalSets").val()!=""?
+                $("#hospitalSets").val():
+                $scope.queryData.hospitalId,
+            "top10":5,"Descend":false};
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
@@ -194,7 +215,15 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
     $scope.drawLeftEcharts=function(){
 
         //已经测试通过
-        $data={"hnameString":$("#hospitalSets").find("option:selected").text()};
+        $data={
+            "hnameString":$("#hospitalSets").find("option:selected").text()!=""?
+                $("#hospitalSets").find("option:selected").text():
+                $scope.queryData.hospital
+            ,
+            "idString":$("#hospitalSets").val()!=""?
+                $("#hospitalSets").val():
+                $scope.queryData.hospitalId
+        };
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
@@ -206,22 +235,13 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
             success:function(response){
                 //console.log(response);
                 var $jsonData=eval(response);
-                //console.log($jsonData);
-                //console.log("success");
-                //$scope.drawEcharts($jsonData);
                 $scope.config.echarts.drawBar( $scope.leftechartsOption,$scope.leftecharts,$jsonData,"vertical");
-                //$scope.leftechartsOption.series[0].data=$jsonData["series"][0];
-                //console.log($scope.leftechartsOption);
-                //$scope.leftecharts.setOption($scope.leftechartsOption);
-                //$scope.leftechartsOption.version++;
-
             },
             error:function(){
                 console.log("error");
             }
         });
     };
-
     /*
      * 获取医院select列表
      * */
@@ -238,8 +258,16 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
                 var $jsonData=eval(response);
                 //$scope.drawEcharts($jsonData);
                 $scope.formData.hospitalSets=$jsonData;
+                for(var i=0;i<$jsonData.length;i++){
+                    //console.log($jsonData[i].hnameString);
+                    if($jsonData[i].hnameString==$scope.queryData.hospital){
+                        $scope.queryData.hospitalId=$jsonData[i].idString;
+                    }
+                }
+                console.log($scope.queryData);
                 $scope.formData.hospitalId=$scope.formData.hospitalSets[0];
                 console.log("setting sets complete!");
+                $scope.init();
                 $scope.$apply();
                 //console.log($scope.formData.hospitalSets);
                 //$scope.closeModal();
@@ -253,7 +281,7 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
     $scope.init=function(){
 
         //$scope.openModal();
-        $scope.getHospitalSets();
+        //$scope.getHospitalSets();
 
         $scope.drawLeftEcharts();
         $scope.drawRightLeftEcharts();
@@ -263,7 +291,9 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
 
 
     };
-    $scope.init();
+    $scope.getHospitalSets();
+
+    //$scope.init();
 
 
     /*点击切换医院，画左下侧的图
@@ -273,7 +303,7 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
         var hospital=$("#hospitalSets").find("option:selected").text();
         $localStorage.allHospitalqueryData.hospital=hospital;
 
-        $scope.onSelectChange();
+        $scope.init();
         //$scope.queryData.hospital=hospital;
 
 

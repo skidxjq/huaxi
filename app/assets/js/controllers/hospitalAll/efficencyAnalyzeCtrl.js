@@ -38,7 +38,7 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage','$modal
     //$scope.formData=$localStorage.allHospitalqueryData;
 
     $scope.optionSubmit=function(){
-        //$scope.openModal();
+        $scope.openModal();
         $scope.formData.diseaseName=$("#diseaseName").find("option:selected").text();
         //更改title
         $scope.echartsTitle="四川"+$scope.formDataMap.hospitalType[$scope.formData.hospitalType]+$scope.formData.diseaseName+"基金效率使用排名";
@@ -73,7 +73,7 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage','$modal
                 console.log("$######");
 
                 $scope.drawEcharts($jsonData);
-                //$scope.closeModal();
+                $scope.closeModal();
             }
         });
 
