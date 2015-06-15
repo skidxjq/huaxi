@@ -180,5 +180,6 @@ app.controller('hospitalFeeCtrl', ['$scope','$http',function($scope,$http) {
             $scope.rateEcharts=chartApi.getInstance();
         }
     };
+    $scope.myDate = null
 
 }]);

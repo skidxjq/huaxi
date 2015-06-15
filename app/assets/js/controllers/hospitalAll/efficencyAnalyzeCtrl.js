@@ -35,6 +35,7 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage','$modal
         }:
         $scope.formData=$localStorage.allHospitalqueryData
     ;
+    console.log($scope.formData);
     //$scope.formData=$localStorage.allHospitalqueryData;
 
     $scope.optionSubmit=function(){
@@ -42,10 +43,6 @@ app.controller('efficencyAnalyzeCtrl', ['$scope','$http','$localStorage','$modal
         $scope.formData.diseaseName=$("#diseaseName").find("option:selected").text();
         //更改title
         $scope.echartsTitle="四川"+$scope.formDataMap.hospitalType[$scope.formData.hospitalType]+$scope.formData.diseaseName+"基金效率使用排名";
-
-        console.log($scope.formData);
-        $localStorage.singleHospitalformData=$scope.formData;
-        console.log($localStorage);
         //整齐化1
         $scope.formData.w1=$scope.formData.w1*$scope.formData.checked.w1;
         $scope.formData.w2=$scope.formData.w2*$scope.formData.checked.w2;

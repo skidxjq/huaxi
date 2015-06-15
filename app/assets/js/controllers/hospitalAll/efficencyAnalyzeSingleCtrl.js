@@ -122,7 +122,7 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
             ,
             "idString":$("#hospitalSets").val()!=""?
                 $("#hospitalSets").val():
-                $scope.queryData.hospitalId,"top10":5,"Descend":true};
+                $scope.queryData.hospitalId,"top10":10,"Descend":true};
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
@@ -150,7 +150,7 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
             ,
             "idString":$("#hospitalSets").val()!=""?
                 $("#hospitalSets").val():
-                $scope.queryData.hospitalId,"top10":5,"Descend":false};
+                $scope.queryData.hospitalId,"top10":10,"Descend":false};
 
         $.ajax({
             type:"GET",
@@ -180,7 +180,7 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
             "idString":$("#hospitalSets").val()!=""?
                 $("#hospitalSets").val():
                 $scope.queryData.hospitalId,
-            "top10":5,"Descend":false};
+            "top10":10,"Descend":false};
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",

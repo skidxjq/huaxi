@@ -8,6 +8,7 @@ var app=angular.module('myApp', [
     'ngTable',
     'oc.lazyLoad',
     'ui.bootstrap',
+    //'ngQuickDate',
     //'ui.select',
     //'ngSanitize',
     //'ui.router',
@@ -152,26 +153,15 @@ var app=angular.module('myApp', [
                 controller: 'selectCtrl'
 
             })
+            .when('/test', {
+                templateUrl: 'tpl/test.html'
+                //controller: 'selectCtrl'
+
+            })
 
             .otherwise({redirectTo: '/index'});
     }]);
-app.directive('formOptions',function(){
-    return {
-        restrict:'EA',
-        //controller:'AlertController',
-        controller:function($scope,$elements){},
-        template:'dddd',
-        //templateUrl:'tpl/options/allHospitalConditoins.html',
-        transclude:true,
-        replace:true,
-        scope: {
-            type: '@',
-            close: '&'
-        }
-    };
 
-
-});
 
 //angular.module('ui.bootstrap').controller('AlertDemoCtrl', function ($scope) {
 //    $scope.alerts = [

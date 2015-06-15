@@ -48,11 +48,6 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
         $scope.index=newValue;
         console.log($("#hospitalSets").find("option:selected").text());
     });
-    //$scope.echartsOption={
-    //    //legend
-    //    //to do
-    //};
-
 
     $scope.echartsOption = {
         version: 1,
@@ -176,7 +171,7 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
     * */
     $("#hospitalSets").bind("change",function(){
         console.log("change");
-    })
+    });
 
     //对响应的数据进行绘制
     $scope.drawEcharts=function($jsonData){
@@ -186,8 +181,6 @@ app.controller('hospitalSingleDiseaseAnalyzeCtrl', ['$scope','$http','$modal','$
         $scope.echarts.setOption($scope.echartsOption,true);
     };
     $scope.callBackFunc=function($params){
-        //console.log(444);
-        //console.log($params);
 
         $localStorage.singleHospitalformData.hospital=$params["name"];
         //$localStorage.formData=$scope.formData;

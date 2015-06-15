@@ -5,69 +5,6 @@ app.controller('indexCtrl', ['$scope','$http',function($scope,$http) {
 
     //根据模板生成echartsoption
     console.log($scope.config.mock.getRandomData(10,100,1));
-    //$scope.overviewEchartsOption={
-    //    version: 1,
-    //
-    //    tooltip: {
-    //        trigger: 'axis'
-    //    },
-    //    legend: {
-    //        data: ['医保费用（亿）','同比增长率（百分比）'],
-    //        show:true,
-    //        y: 'bottom'
-    //    },
-    //    toolbox: {
-    //        show: false
-    //    },
-    //    grid: {
-    //        x: 60,
-    //        y: 40,
-    //        x2: 30,
-    //        y2: 55
-    //    },
-    //    padding: 0,
-    //    calculable: true,
-    //    yAxis: [
-    //        {
-    //            type:'value',
-    //            name:"医保费用（亿）"
-    //
-    //        }
-    //        ,
-    //        {
-    //            type:'value',
-    //            name:"同比增长率（百分比）",
-    //            axisLable:{
-    //                formatter:'{value}%'
-    //            }
-    //
-    //        }
-    //    ],
-    //    xAxis: [
-    //        {
-    //            type: 'category',
-    //            data:['2011年','2012年','2013年','2014年','2015年']
-    //        }
-    //    ],
-    //    series: [
-    //
-    //        {
-    //            name: '医保费用（亿）',
-    //            type: 'bar',
-    //            data:$scope.config.mock.getRandomData(10,100,0)
-    //        },
-    //        {
-    //            name: '同比增长率（百分比）',
-    //            type: 'line',
-    //            data: $scope.config.mock.getRandomData(10, 2, 2)
-    //        }
-    //    ],
-    //    onRegisterApi: function (chartApi) {
-    //        $scope.overviewEchartsOptionApi = chartApi;
-    //        //$scope.rightLeftEchartsOptionApi.registerBarClicked($scope,$scope.callBackFunc);
-    //        $scope.overviewEcharts=chartApi.getInstance();
-    //    }
-    //};
     $scope.overviewEchartsOption= {
         tooltip : {
             trigger: 'axis'

@@ -110,7 +110,7 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
         //console.log($event);
         $event.preventDefault();
         $event.stopPropagation();
-        $scope.maxDateOpened = false;
+        //$scope.maxDateOpened = false;
 
         $scope.minDateOpened = !$scope.minDateOpened;
         console.log($scope.minDateOpened);
@@ -471,7 +471,7 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
                 {
                     name: 'RANK',
                     type: 'bar',
-                    barWidth:30,
+                    //barWidth:30,
                     itemStyle:{
                         normal:{
                             color:function(params){
@@ -636,8 +636,40 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
             function () {
             });
     };
+
+    $scope.openOptionModal=function(){
+        $scope.modalInstance = $modal.open({
+            templateUrl: 'tpl/optionModal.html',
+            controller: 'ModalInstanceCtrl',
+            //backdrop:'static',
+            //windowClass:'my-modal-class',
+            //keyboard:false,
+            //size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+        $scope.modalInstance.result.then(
+            function (selectedItem) {
+                console.log("click ok");
+
+            },
+            function () {
+            });
+    }
 }]);
 app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function($scope, $modalInstance) {
+    //$scope.ca
+    $scope.ok = function () {
+        $modalInstance.dismiss('cancel');
+
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
 }]);
 app.animation('.view-slide-in', function () {
     return {

@@ -63,32 +63,27 @@
             </div>
             <div class="col-lg-4  m-t" style="margin-left:-10px;">
 
-                <div class="row form-inline row m-b-xs clearfix">
+                <div class="row form-inline input-daterange  m-b-xs clearfix">
                     <label class="pull-left m-l my-label" >时间:</label>
 
                     <div class="col-lg-4" style="margin-left:0">
                         <p class="input-group form_datetime">
-                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt_min" is-open="minDateOpened" min-date="" max-date="dt_max" datepicker-options="dateOptions" ng-required="true" close-text="Close"  />
+                            <input type="text" class="form-control" name="start" ng-model="formData.startTime"  placeholder="点击选择时间"/>
 
-                        <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="minDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 
-                    </span>
                         </p>
                     </div>
                     <label class="pull-left m-l my-label" >至:</label>
 
                     <div class="col-lg-4" style="margin-left:0">
                         <p class="input-group form_datetime">
-                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt_max" is-open="maxDateOpened" min-date="dt_min" max-date="dt" datepicker-options="dateOptions"  ng-required="true" close-text="Close"  />
+                            <input type="text" class="form-control" ng-model="formData.endTime" name="end"  placeholder="点击选择时间"/>
 
-                        <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="maxDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 
-                    </span>
                         </p>
                     </div>
                 </div>
+
                 <div class="row form-inline row m-b-xs clearfix">
                     <label class="pull-left m-l my-label" >医生:</label>
                     <div class="col-lg-7">
@@ -133,3 +128,12 @@
     </div>
 
 </div>
+<script>
+    $('.input-daterange').datepicker({
+        format: "yyyy-mm-dd",
+        clearBtn:true,
+        todayHighlight:true,
+        toggleActive:true
+    });
+
+</script>
