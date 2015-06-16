@@ -180,7 +180,7 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
             "idString":$("#hospitalSets").val()!=""?
                 $("#hospitalSets").val():
                 $scope.queryData.hospitalId,
-            "top10":10,"Descend":false};
+            "top10":30,"Descend":false};
         $.ajax({
             type:"GET",
             //url:"http://localhost/skidxjq/php/service.php",
