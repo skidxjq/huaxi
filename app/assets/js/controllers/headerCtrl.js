@@ -287,24 +287,25 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
                 icon:'bar'
             }
         ],
-        "doctors":["罗建平","李四","王五","顺溜","王娇","学习","雷锋","棒棒","刘德华","甘露"],
+        //"doctors":["罗建平","李四","王五","顺溜","王娇","学习","雷锋","棒棒","刘德华","甘露"],
+        "doctors":["蒋莎莎","陈建琴","符小敏","敖冬梅","蔡懿","陈玉","李婕婷","陈海燕","丁晖","陈越平"],
         "data":[100,200,30,50,60,10,34,23,55,22],
         "doctorTable":[
-            {"doctor":"罗建平","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
-            {"doctor":"李四","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
-            {"doctor":"王五","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
-            {"doctor":"顺溜","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
-            {"doctor":"王娇","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
-            {"doctor":"学习","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
-            {"doctor":"雷锋","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
-            {"doctor":"棒棒","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
-            {"doctor":"刘德华","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
-            {"doctor":"甘露","hospital":"华西医院","department":"外科","count":1000,"increase":2.4}
+            {"doctor":"蒋莎莎","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"陈建琴","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"符小敏","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"敖冬梅","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"蔡懿","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"陈玉","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"李婕婷","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"陈海燕","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"丁晖","hospital":"华西医院","department":"外科","count":1000,"increase":2.4},
+            {"doctor":"陈越平","hospital":"华西医院","department":"外科","count":1000,"increase":2.4}
         ],
         "getRandomData":function(num,max,points){
             var arr=[];
             for(var i=0;i<num;i++){
-                arr.push((Math.random()*max).toFixed(2));
+                arr.push((Math.random()*max).toFixed(points));
             }
             return arr;
         },

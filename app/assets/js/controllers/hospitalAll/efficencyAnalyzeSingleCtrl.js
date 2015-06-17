@@ -138,7 +138,7 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
                 console.log("error");
             }
         });
-    }
+    };
 
 
 

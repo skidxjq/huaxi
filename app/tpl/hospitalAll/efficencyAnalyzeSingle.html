@@ -10,7 +10,7 @@
                         <select class="form-control " style="width:100%;" id="hospitalSets" ng-model="formData.hospitalId" >
                             <!--<option value="">{{queryData.hospital}}</option>-->
                             <!--to do-->
-                            <option ng-repeat="obj in formData.hospitalSets" ng-selected="obj.hnameString==queryData.hospital" value="2">{{obj.hnameString}}</option>
+                            <option ng-repeat="obj in formData.hospitalSets" ng-selected="obj.hnameString==queryData.hospital" value="{{obj.idString}}">{{obj.hnameString}}</option>
                         </select>
                          <!--<select class="form-control " ng-options="item as item.hnameString for item in formData.hospitalSets"-->
                                  <!--style="width:100%;" id="hospitalSets" ng-model="formData.hospitalId" >-->
@@ -51,13 +51,13 @@
             <div class="col-lg-12">
                 <span class="handcursor label bg-primary inline ">前10名</span>
                 <!--<span class="handcursor label bg-primary inline ">后10名</span>-->
-                <div data-iu-chart="rightRightEchartsOption" class="" style="height:250px;"></div>
+                <div data-iu-chart="rightRightEchartsOption" class="" style="height:220px;"></div>
 
             </div>
             <div class="col-lg-12">
                 <span class="handcursor label bg-primary inline ">后10名</span>
                 <!--<span class="handcursor label bg-primary inline ">前10名</span>-->
-                <div data-iu-chart="rightLeftEchartsOption" class="" style="height:250px;"></div>
+                <div data-iu-chart="rightLeftEchartsOption" class="" style="height:220px;"></div>
 
             </div>
 
