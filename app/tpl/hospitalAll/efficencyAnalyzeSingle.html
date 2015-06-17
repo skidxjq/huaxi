@@ -48,31 +48,35 @@
         <div class="row">
             <h5><span ng-bind="queryData.hospital"></span>重点病种基金使用效率在同级别医院中排名概览</h5>
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <span class="handcursor label bg-primary inline ">前10名</span>
-                <!--<span class="handcursor label bg-primary inline ">前10名</span>-->
-                <div data-iu-chart="rightLeftEchartsOption" class="" style="height:180px;"></div>
-
-            </div>
-            <div class="col-lg-6">
-                <span class="handcursor label bg-primary inline ">后10名</span>
                 <!--<span class="handcursor label bg-primary inline ">后10名</span>-->
-                <div data-iu-chart="rightRightEchartsOption" class="" style="height:180px;"></div>
+                <div data-iu-chart="rightRightEchartsOption" class="" style="height:250px;"></div>
+
+            </div>
+            <div class="col-lg-12">
+                <span class="handcursor label bg-primary inline ">后10名</span>
+                <!--<span class="handcursor label bg-primary inline ">前10名</span>-->
+                <div data-iu-chart="rightLeftEchartsOption" class="" style="height:250px;"></div>
 
             </div>
 
-        </div>
-        <div class="row">
-            <h5><span ng-bind="hospitalName"></span>重点病种基金使用效率排名与基金使用量综合分析</h5>
-            <!--<span class="handcursor label bg-primary inline ">金额占比前10名</span>-->
-            <span class="handcursor label bg-primary inline ">金额占比前30名</span>
-
-                <div data-iu-chart="scatterEchartsOption" class="" style="height:220px;"></div>
-
-
 
         </div>
+
 
     </div>
+
 </div>
+<div class="wrapper no-padder m-l-md " style="margin:-10px 0px 0 30px;">
+    <h4><span ng-bind="queryData.hospital"></span>重点病种基金使用效率排名与基金使用量综合分析</h4>
+    <!--<span class="handcursor label bg-primary inline ">金额占比前10名</span>-->
+    <span class="handcursor label bg-primary inline ">金额占比前30名</span>
+
+    <div data-iu-chart="scatterEchartsOption" class="" style="height:220px;"></div>
+
+
+
+</div>
+
 

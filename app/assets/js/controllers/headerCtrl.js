@@ -159,7 +159,8 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
     }
     $scope.config={};
     //$scope.config.baseUrl="http://10.20.1.12:8070";
-    $scope.config.baseUrl="http://192.168.1.30:8080";
+    $scope.config.baseUrl="http://192.168.1.36:8080";
+    //$scope.config.baseUrl="http://192.168.1.30:8080";
     //$scope.config.baseUrl="http://localhost/skidxjq/php";
     $scope.config.echarts={};
     $scope.config.echarts.legend=[
@@ -425,7 +426,7 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
                 x: 30,
                 y: 10,
                 x2: 30,
-                y2: 55
+                y2: 95
             },
             padding: 0,
             calculable: true,
@@ -438,10 +439,10 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
 
                         interval: 0,
                         textStyle : {
-                            fontSize : 10
+                            //fontSize : 15
                         },
                         clickable:true,
-
+                        //rotate:45,
                         formatter: function(value){
                             var res='';
                             for(var i=0, l=value.length;i<l;i++){
@@ -454,7 +455,7 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
                             }
                             return res;
                         },
-                        margin:20
+                        //margin:30
                     },
                     type: 'category',
                     data: ["","","","",""]
@@ -471,7 +472,7 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
                 {
                     name: 'RANK',
                     type: 'bar',
-                    //barWidth:30,
+                    barWidth:30,
                     itemStyle:{
                         normal:{
                             color:function(params){
