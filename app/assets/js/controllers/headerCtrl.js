@@ -218,18 +218,21 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
         direction=="vertical"?
             options.yAxis[0].data=jsonData["axis"]:
             options.xAxis[0].data=jsonData["axis"];
+
         options.series[0].data=jsonData["series"][0];
         //console.log(options);
         echarts.setOption(options);
         echarts.hideLoading();
         console.log(options);
         options.version++;
+        $scope.$apply();
     };
     //画scatter
     $scope.config.echarts.drawScatter=function(options,echarts,jsonData){
         console.log(jsonData);
         options.series[0].data=jsonData["series"][0]["data"];
         echarts.setOption(options);
+        $scope.$apply();
     };
     $scope.config.mock={
         "diseaseSets":["高血压","冠心病","感冒","颈椎病","肺部感染","心脏病","腰间盘突出","癌症","脑梗塞","脑血栓","肿瘤","支气管炎","哮喘"],
@@ -455,7 +458,7 @@ app.controller('headerCtrl', ['$rootScope','$scope','$http','$location','$log','
                                 }
                             }
                             return res;
-                        },
+                        }
                         //margin:30
                     },
                     type: 'category',

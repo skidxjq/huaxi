@@ -267,8 +267,9 @@ app.controller('efficencyAnalyzeSingleCtrl', ['$scope','$http','$localStorage',f
                 console.log($scope.queryData);
                 $scope.formData.hospitalId=$scope.formData.hospitalSets[0];
                 console.log("setting sets complete!");
-                $scope.init();
                 $scope.$apply();
+
+                $scope.init();
                 //console.log($scope.formData.hospitalSets);
                 //$scope.closeModal();
 
